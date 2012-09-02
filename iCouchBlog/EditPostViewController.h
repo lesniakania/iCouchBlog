@@ -1,5 +1,5 @@
 //
-//  AddPostViewController.h
+//  EditPostViewController.h
 //  iCouchBlog
 //
 //  Created by Anna Lesniak on 8/26/12.
@@ -9,12 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "Post.h"
 
-@interface AddPostViewController : UIViewController
+@interface EditPostViewController : UIViewController
 
 @property (strong, nonatomic) Post *post;
 
 @property (weak, nonatomic) IBOutlet UITextView *titleView;
-@property (weak, nonatomic) IBOutlet UITextView *bodyVIew;
+@property (weak, nonatomic) IBOutlet UITextView *bodyView;
 
 - (IBAction) savePressed;
 

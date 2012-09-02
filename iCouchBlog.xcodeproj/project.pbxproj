@@ -29,7 +29,7 @@
 		8191D0BB15EA382700591DC5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8191D0B915EA382700591DC5 /* InfoPlist.strings */; };
 		8191D0BE15EA382700591DC5 /* iCouchBlogTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8191D0BD15EA382700591DC5 /* iCouchBlogTests.m */; };
 		8191D0CC15EA415000591DC5 /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 8191D0CB15EA415000591DC5 /* Post.m */; };
-		8191D0D015EA460700591DC5 /* AddPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8191D0CE15EA460700591DC5 /* AddPostViewController.m */; };
+		8191D0D015EA460700591DC5 /* EditPostViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8191D0CE15EA460700591DC5 /* EditPostViewController.m */; };
 		8191D0D715EFFED600591DC5 /* TouchDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8191D0D615EFFED600591DC5 /* TouchDB.framework */; };
 		8191D0D915EFFEE100591DC5 /* CouchCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8191D0D815EFFEE100591DC5 /* CouchCocoa.framework */; };
 		819D75D915F339B1009CDF7D /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 819D75D815F339B1009CDF7D /* BaseModel.m */; };
@@ -77,8 +77,8 @@
 		8191D0BD15EA382700591DC5 /* iCouchBlogTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iCouchBlogTests.m; sourceTree = "<group>"; };
 		8191D0CA15EA415000591DC5 /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Post.h; sourceTree = "<group>"; };
 		8191D0CB15EA415000591DC5 /* Post.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Post.m; sourceTree = "<group>"; };
-		8191D0CD15EA460700591DC5 /* AddPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPostViewController.h; sourceTree = "<group>"; };
-		8191D0CE15EA460700591DC5 /* AddPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPostViewController.m; sourceTree = "<group>"; };
+		8191D0CD15EA460700591DC5 /* EditPostViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EditPostViewController.h; sourceTree = "<group>"; };
+		8191D0CE15EA460700591DC5 /* EditPostViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EditPostViewController.m; sourceTree = "<group>"; };
 		8191D0D615EFFED600591DC5 /* TouchDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TouchDB.framework; sourceTree = "<group>"; };
 		8191D0D815EFFEE100591DC5 /* CouchCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = CouchCocoa.framework; sourceTree = "<group>"; };
 		819D75D715F339B1009CDF7D /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
@@ -205,8 +205,8 @@
 				8191D0A515EA382700591DC5 /* MasterViewController.m */,
 				8191D0A715EA382700591DC5 /* DetailViewController.h */,
 				8191D0A815EA382700591DC5 /* DetailViewController.m */,
-				8191D0CD15EA460700591DC5 /* AddPostViewController.h */,
-				8191D0CE15EA460700591DC5 /* AddPostViewController.m */,
+				8191D0CD15EA460700591DC5 /* EditPostViewController.h */,
+				8191D0CE15EA460700591DC5 /* EditPostViewController.m */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -344,7 +344,7 @@
 				8191D0A615EA382700591DC5 /* MasterViewController.m in Sources */,
 				8191D0A915EA382700591DC5 /* DetailViewController.m in Sources */,
 				8191D0CC15EA415000591DC5 /* Post.m in Sources */,
-				8191D0D015EA460700591DC5 /* AddPostViewController.m in Sources */,
+				8191D0D015EA460700591DC5 /* EditPostViewController.m in Sources */,
 				818E2E0B15F29EB900E42451 /* DataStore.m in Sources */,
 				819D75D915F339B1009CDF7D /* BaseModel.m in Sources */,
 			);

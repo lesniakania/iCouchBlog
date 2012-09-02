@@ -131,7 +131,13 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Detail" id="26"/>
+                    <navigationItem key="navigationItem" title="Detail" id="26">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="bYs-92-T9F">
+                            <connections>
+                                <segue destination="0sS-sz-tH0" kind="push" identifier="editPost" id="aAH-Zr-WdO"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="bodyView" destination="2PJ-A6-iOs" id="xjq-nn-heR"/>
                         <outlet property="titleView" destination="aOv-OJ-h26" id="iuc-V3-vgw"/>
@@ -140,11 +146,11 @@
             </objects>
             <point key="canvasLocation" x="902" y="64"/>
         </scene>
-        <!--Add Post View Controller-->
+        <!--Edit Post View Controller-->
         <scene sceneID="W1C-K9-MEM">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PIQ-hn-b9X" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="0sS-sz-tH0" customClass="AddPostViewController" sceneMemberID="viewController">
+                <viewController id="0sS-sz-tH0" customClass="EditPostViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="sTb-hZ-rmk">
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -194,7 +200,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="bodyVIew" destination="s7G-vo-rQw" id="zBZ-aw-i7n"/>
+                        <outlet property="bodyView" destination="s7G-vo-rQw" id="2Yc-lh-bEQ"/>
                         <outlet property="titleView" destination="BCp-QL-ReB" id="yv8-20-BfX"/>
                     </connections>
                 </viewController>
@@ -203,14 +209,6 @@
         </scene>
     </scenes>
     <classes>
-        <class className="AddPostViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/AddPostViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="savePressed"/>
-                <relationship kind="outlet" name="bodyVIew" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="titleView" candidateClass="UITextView"/>
-            </relationships>
-        </class>
         <class className="CouchUITableSource" superclassName="NSObject">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/CouchUITableSource.h"/>
             <relationships>
@@ -220,6 +218,14 @@
         <class className="DetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DetailViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="bodyView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="titleView" candidateClass="UITextView"/>
+            </relationships>
+        </class>
+        <class className="EditPostViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/EditPostViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="savePressed"/>
                 <relationship kind="outlet" name="bodyView" candidateClass="UITextView"/>
                 <relationship kind="outlet" name="titleView" candidateClass="UITextView"/>
             </relationships>
@@ -236,4 +242,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="aAH-Zr-WdO"/>
+    </inferredMetricsTieBreakers>
 </document>

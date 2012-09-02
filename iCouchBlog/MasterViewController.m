@@ -8,7 +8,7 @@
 
 #import "MasterViewController.h"
 #import "DetailViewController.h"
-#import "AddPostViewController.h"
+#import "EditPostViewController.h"
 #import "Post.h"
 
 @interface MasterViewController () {}
@@ -82,7 +82,7 @@
 {
   if ([[segue identifier] isEqualToString: @"showDetail"]) {
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    Post *post = [Post withDocument: [self.dataSource documentAtIndexPath: indexPath]];
+    Post *post = [Post modelForDocument: [self.dataSource documentAtIndexPath: indexPath]];
     [[segue destinationViewController] setPost: post];
   } else if ([[segue identifier] isEqualToString: @"addPost"]) {
     Post *newPost = [[Post alloc] init];

@@ -8,12 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BaseModel : NSObject
+@interface BaseModel : CouchModel
 
-@property (strong, nonatomic) NSString *_id;
-@property (strong, nonatomic) NSString *_rev;
-
-+ (id) withDocument: (CouchDocument *) document;
-+ (id) withProperties: (NSDictionary *) properties;
+- (void) save;
 
 @end

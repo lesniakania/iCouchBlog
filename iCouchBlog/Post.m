@@ -10,15 +10,5 @@
 
 @implementation Post
 
-- (void) save
-{
-  CouchDocument *doc = [[DataStore currentDatabase] untitledDocument];
-  RESTOperation *op = [doc putProperties: @{ @"title" : self.title, @"body" : self.body }];
-  [op onCompletion: ^{
-    if (op.error)
-      NSLog(@"Couldn't save the post %@", self);
-	}];
-  [op start];
-}
 
 @end

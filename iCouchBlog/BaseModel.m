@@ -10,18 +10,19 @@
 
 @implementation BaseModel
 
-+ (id) withDocument: (CouchDocument *) document
+- (id) init
 {
-  return [self withProperties: [document properties]];
+  return [self initWithNewDocumentInDatabase: [DataStore currentDatabase]];
 }
 
-+ (id) withProperties: (NSDictionary *) properties
+- (void) save
 {
-  BaseModel *model = [[[self class] alloc] init];
-  for (NSString *property in properties) {
-    [model setValue: [properties valueForKey: property] forKey: property];
-  }
-  return model;
+  RESTOperation *op = [super save];
+  [op onCompletion: ^{
+    if (op.error)
+      NSLog(@"Couldn't save the post %@", self);
+	}];
+  [op start];
 }
 
 @end
