@@ -57,6 +57,7 @@
       buildConfiguration = "Debug"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
+      enableOpenGLFrameCaptureMode = "0"
       allowLocationSimulation = "YES">
       <BuildableProductRunnable>
          <BuildableReference
@@ -67,6 +68,32 @@
             ReferencedContainer = "container:iCouchBlog.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "-Log YES"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-LogSyncVerbose YES"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-LogView YES"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-LogRemoteRequest YES"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-LogSync YES"
+            isEnabled = "YES">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-LogTDRouter YES"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

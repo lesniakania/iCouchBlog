@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Post.h"
 
-@interface DetailViewController : UIViewController <UISplitViewControllerDelegate>
+@interface DetailViewController : UIViewController
 
 @property (strong, nonatomic) Post *post;
 

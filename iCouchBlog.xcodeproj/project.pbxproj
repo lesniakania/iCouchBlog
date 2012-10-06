@@ -412,7 +412,8 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Klipp (WVM7V3UK3H)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Paul Klipp (WVM7V3UK3H)";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -427,7 +428,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
-				SDKROOT = iphoneos;
+				PROVISIONING_PROFILE = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";
+				SDKROOT = iphoneos5.1;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -440,7 +444,8 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Klipp (WVM7V3UK3H)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Paul Klipp (WVM7V3UK3H)";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -449,7 +454,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				SDKROOT = iphoneos;
+				PROVISIONING_PROFILE = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";
+				SDKROOT = iphoneos5.1;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -458,6 +466,9 @@
 		8191D0C215EA382700591DC5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Klipp (WVM7V3UK3H)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Paul Klipp (WVM7V3UK3H)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -465,12 +476,16 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iCouchBlog/iCouchBlog-Prefix.pch";
 				INFOPLIST_FILE = "iCouchBlog/iCouchBlog-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -478,6 +493,9 @@
 		8191D0C315EA382700591DC5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Paul Klipp (WVM7V3UK3H)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Paul Klipp (WVM7V3UK3H)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -485,12 +503,16 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "iCouchBlog/iCouchBlog-Prefix.pch";
 				INFOPLIST_FILE = "iCouchBlog/iCouchBlog-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";
+				SDKROOT = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

@@ -24,6 +24,7 @@ static CouchDatabase *currentDatabase;
     }
     
     currentDatabase = [server databaseNamed: kDatabaseName];
+
     
     // Create the database on the first run of the app.
     NSError* error;

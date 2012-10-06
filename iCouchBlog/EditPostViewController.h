@@ -8,13 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Post.h"
+#import "DetailViewController.h"
 
-@interface EditPostViewController : UIViewController
-
-@property (strong, nonatomic) Post *post;
-
-@property (weak, nonatomic) IBOutlet UITextView *titleView;
-@property (weak, nonatomic) IBOutlet UITextView *bodyView;
+@interface EditPostViewController : DetailViewController
 
 - (IBAction) savePressed;
 

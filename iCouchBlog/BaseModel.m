@@ -10,13 +10,11 @@
 
 @implementation BaseModel
 
-- (id) init
-{
+- (id) init {
   return [self initWithNewDocumentInDatabase: [DataStore currentDatabase]];
 }
 
-- (void) save
-{
+- (void) save {
   RESTOperation *op = [super save];
   [op onCompletion: ^{
     if (op.error)

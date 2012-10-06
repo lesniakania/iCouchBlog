@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #define kDatabaseName @"icouch-blog"
+#define kSyncURL @"http://localhost:5984/couchblog/"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
