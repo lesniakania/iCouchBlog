@@ -1,5 +1,5 @@
 //
-//  MasterViewController.m
+//  PostsViewController.m
 //  iCouchBlog
 //
 //  Created by Anna Lesniak on 8/26/12.
@@ -7,16 +7,20 @@
 //
 
 #import "AppDelegate.h"
-#import "MasterViewController.h"
+#import "PostsViewController.h"
 #import "DetailViewController.h"
 #import "EditPostViewController.h"
 #import "Post.h"
 
-@implementation MasterViewController
+@implementation PostsViewController
 
 - (void) viewDidLoad {
   [super viewDidLoad];
   self.navigationItem.leftBarButtonItem = self.editButtonItem;
+  
+  [self.navigationController.navigationBar setTintColor: [UIColor navigationBarColor]];
+  self.tableView.backgroundColor = [UIColor lightBackgroundColor];
+  self.tableView.separatorColor = [UIColor tableSeparatorColor];
   
   //TODO: where to put this?
   CouchDesignDocument* design = [[DataStore currentDatabase] designDocumentWithName: @"posts"];
@@ -47,6 +51,12 @@
 
 - (NSInteger) numberOfSectionsInTableView: (UITableView *) tableView {
   return 1;
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+  cell.backgroundColor = [UIColor backgroundColor];
+  cell.textLabel.textColor = [UIColor darkTextColor];
+  cell.detailTextLabel.textColor = [UIColor lightTextColor];
 }
 
 - (void) couchTableSource: (CouchUITableSource *) source

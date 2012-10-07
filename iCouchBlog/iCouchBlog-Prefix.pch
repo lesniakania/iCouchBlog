@@ -15,4 +15,5 @@
   #import <CouchCocoa/CouchTouchDBServer.h>
   #import <CouchCocoa/CouchDesignDocument_Embedded.h>
   #import "DataStore.h"
+  #import "Colors.h"
 #endif

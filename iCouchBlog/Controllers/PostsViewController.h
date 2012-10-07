@@ -1,5 +1,5 @@
 //
-//  MasterViewController.h
+//  PostsViewController.h
 //  iCouchBlog
 //
 //  Created by Anna Lesniak on 8/26/12.
@@ -11,7 +11,7 @@
 
 @class DetailViewController;
 
-@interface MasterViewController : UITableViewController <CouchUITableDelegate>
+@interface PostsViewController : UITableViewController <CouchUITableDelegate>
 
 @property (strong, nonatomic) IBOutlet CouchUITableSource* dataSource;
 

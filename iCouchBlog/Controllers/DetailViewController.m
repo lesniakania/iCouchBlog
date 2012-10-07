@@ -22,6 +22,13 @@
     self.titleView.text = [self.post getValueOfProperty: @"title"];
     self.bodyView.text = [self.post getValueOfProperty: @"body"];
   }
+  self.view.backgroundColor = [UIColor backgroundColor];
+  self.titleView.backgroundColor = [UIColor lightBackgroundColor];
+  self.bodyView.backgroundColor = [UIColor lightBackgroundColor];
+  self.titleLabel.textColor = [UIColor darkTextColor];
+  self.bodyLabel.textColor = [UIColor lightTextColor];
+  self.titleView.textColor = [UIColor darkTextColor];
+  self.bodyView.textColor = [UIColor darkTextColor];
 }
 
 - (void) viewDidLoad {
