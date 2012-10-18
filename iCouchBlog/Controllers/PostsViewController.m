@@ -22,23 +22,15 @@
   self.tableView.backgroundColor = [UIColor lightBackgroundColor];
   self.tableView.separatorColor = [UIColor tableSeparatorColor];
   
-  //TODO: where to put this?
-  CouchDesignDocument* design = [[DataStore currentDatabase] designDocumentWithName: @"posts"];
-  [design defineViewNamed: @"byTitle" mapBlock: MAPBLOCK({
-    id title = [doc objectForKey: @"title"];
-    if (title) emit(title, doc);
-  }) version: @"1.0"];
-  
   // TODO: move it to some method and add pull to refresh
   NSArray *replications = [[DataStore currentDatabase] replicateWithURL: [NSURL URLWithString: kSyncURL] exclusively: YES];
   CouchPersistentReplication *pull = [replications objectAtIndex: 0];
   pull.filter = @"Post/for_user";
-  pull.query_params = @{ @"user_id": @"75d651fda6012650a1d573795b1f46c5"};
+  pull.query_params = @{ @"user_id": @"75d651fda6012650a1d573795b1f46c5" };
   
   
   CouchLiveQuery* query = [[[[DataStore currentDatabase] designDocumentWithName: @"posts"]
                             queryViewNamed: @"byTitle"] asLiveQuery];
-  
   self.dataSource.query = query;
 }
 

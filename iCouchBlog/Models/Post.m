@@ -10,4 +10,20 @@
 
 @implementation Post
 
+static CouchDesignDocument* design;
+
++ (CouchDesignDocument *) design {
+  if (!design) {
+    design = [Post initDesignDocument];
+  }
+  return design;
+}
+
++ (void) defineViews {
+  [[[self class] design] defineViewNamed: @"byTitle" mapBlock: MAPBLOCK({
+    id title = [doc objectForKey: @"title"];
+    if (title) emit(title, doc);
+  }) version: @"1.0"];
+}
+
 @end

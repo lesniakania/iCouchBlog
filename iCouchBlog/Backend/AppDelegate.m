@@ -7,10 +7,18 @@
 //
 
 #import "AppDelegate.h"
+#import "User.h"
+#import "Post.h"
+
+@class User, Post;
 
 @implementation AppDelegate
 
-- (BOOL) application: (UIApplication *) application didFinishLaunchingWithOptions: (NSDictionary *) launchOptions {  
+- (BOOL) application: (UIApplication *) application didFinishLaunchingWithOptions: (NSDictionary *) launchOptions {
+  for (id klass in @[[User class], [Post class]]) {
+    [klass defineViews];
+  }
+  
   return YES;
 }
 

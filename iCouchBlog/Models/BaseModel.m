@@ -10,6 +10,15 @@
 
 @implementation BaseModel
 
++ (CouchDesignDocument *) initDesignDocument {
+  NSString *className = NSStringFromClass(self);
+  return [[DataStore currentDatabase] designDocumentWithName: className];
+}
+
++ (CouchDesignDocument *) design { return nil; }
+
++ (void) defineViews {}
+
 - (id) init {
   return [self initWithNewDocumentInDatabase: [DataStore currentDatabase]];
 }
@@ -22,5 +31,6 @@
 	}];
   [op start];
 }
+
 
 @end
