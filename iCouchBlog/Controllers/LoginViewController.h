@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LoginViewController : UITableViewController
+@interface LoginViewController : UITableViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *emailLabel;
-@property (weak, nonatomic) IBOutlet UITextView *emailTextView;
+@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
 
 - (IBAction) performLogin;
 

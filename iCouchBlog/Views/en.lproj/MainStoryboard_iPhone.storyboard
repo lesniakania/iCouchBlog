@@ -173,13 +173,15 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="ZlL-NO-9eP">
-                                                    <rect key="frame" x="117" y="10" width="163" height="32"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" clearButtonMode="whileEditing" id="bqJ-ID-GNt">
+                                                    <rect key="frame" x="110" y="11" width="170" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="go"/>
+                                                    <connections>
+                                                        <outlet property="delegate" destination="fGt-Bt-KGd" id="MkU-dc-ac7"/>
+                                                    </connections>
+                                                </textField>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
@@ -202,7 +204,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="emailLabel" destination="QzI-Fr-aJF" id="zed-vn-TLw"/>
-                        <outlet property="emailTextView" destination="ZlL-NO-9eP" id="3qZ-am-0Vc"/>
+                        <outlet property="emailTextField" destination="bqJ-ID-GNt" id="Egy-dJ-TdG"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gQL-BX-3NA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -303,7 +305,7 @@
             <relationships>
                 <relationship kind="action" name="performLogin"/>
                 <relationship kind="outlet" name="emailLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="emailTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
             </relationships>
         </class>
         <class className="PostsViewController" superclassName="UITableViewController">
@@ -319,6 +321,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="aAH-Zr-WdO"/>
+        <segue reference="DrW-dV-xy5"/>
     </inferredMetricsTieBreakers>
 </document>

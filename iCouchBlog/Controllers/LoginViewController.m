@@ -17,8 +17,8 @@
   [self.navigationController.navigationBar setTintColor: [UIColor navigationBarColor]];
   
   self.emailLabel.textColor = [UIColor darkTextColor];
-  self.emailTextView.textColor = [UIColor darkTextColor];
-  self.emailTextView.backgroundColor = [UIColor lightBackgroundColor];
+  self.emailTextField.textColor = [UIColor darkTextColor];
+  self.emailTextField.backgroundColor = [UIColor lightBackgroundColor];
 }
 
 - (void) tableView: (UITableView *) tableView willDisplayCell: (UITableViewCell *) cell forRowAtIndexPath: (NSIndexPath *) indexPath {
@@ -26,12 +26,17 @@
 }
 
 - (void) performLogin {
-  NSString *email = self.emailTextView.text;
+  NSString *email = self.emailTextField.text;
   User *user = [User findOrCreateByEmail: email];
   [user login];
   
   id rootController = [self.storyboard instantiateViewControllerWithIdentifier: @"PostsViewController"];
   self.navigationController.viewControllers = [NSArray arrayWithObjects:rootController, nil];
+}
+
+- (BOOL) textFieldShouldReturn: (UITextField *) theTextField {
+  [self performLogin];
+  return YES;
 }
 
 @end
