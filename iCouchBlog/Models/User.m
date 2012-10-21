@@ -12,15 +12,6 @@
 
 @implementation User
 
-static CouchDesignDocument* design;
-
-+ (CouchDesignDocument *) design {
-  if (!design) {
-    design = [User initDesignDocument];
-  }
-  return design;
-}
-
 + (void) defineViews {
   [[[self class] design] defineViewNamed: @"byEmail" mapBlock: MAPBLOCK({
     id email = [doc objectForKey: @"email"];

@@ -7,15 +7,14 @@
 //
 
 #import "BaseModel.h"
+#import "DesignRepository.h"
 
 @implementation BaseModel
 
-+ (CouchDesignDocument *) initDesignDocument {
++ (CouchDesignDocument *) design {
   NSString *className = NSStringFromClass(self);
-  return [[DataStore currentDatabase] designDocumentWithName: className];
+  return [DesignRepository designForClass: className];
 }
-
-+ (CouchDesignDocument *) design { return nil; }
 
 + (void) defineViews {}
 

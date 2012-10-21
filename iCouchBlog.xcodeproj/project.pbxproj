@@ -26,6 +26,7 @@
 		818D789615F1249F00F32171 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 818D789515F1249F00F32171 /* libsqlite3.dylib */; };
 		818D789815F124A800F32171 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 818D789715F124A800F32171 /* libz.dylib */; };
 		818D789915F1251A00F32171 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 818D788F15F1246500F32171 /* SystemConfiguration.framework */; };
+		818D948F1633D6730046B1AD /* DesignRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D948E1633D6730046B1AD /* DesignRepository.m */; };
 		8191D08D15EA382600591DC5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8191D08C15EA382600591DC5 /* UIKit.framework */; };
 		8191D08F15EA382600591DC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8191D08E15EA382600591DC5 /* Foundation.framework */; };
 		8191D09115EA382600591DC5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8191D09015EA382600591DC5 /* CoreGraphics.framework */; };
@@ -82,6 +83,8 @@
 		818D789315F1248E00F32171 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		818D789515F1249F00F32171 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		818D789715F124A800F32171 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		818D948D1633D6730046B1AD /* DesignRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignRepository.h; sourceTree = "<group>"; };
+		818D948E1633D6730046B1AD /* DesignRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignRepository.m; sourceTree = "<group>"; };
 		8191D08815EA382600591DC5 /* iCouchBlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCouchBlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8191D08C15EA382600591DC5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8191D08E15EA382600591DC5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -241,6 +244,8 @@
 		8191D0C815EA3DE000591DC5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				818D948D1633D6730046B1AD /* DesignRepository.h */,
+				818D948E1633D6730046B1AD /* DesignRepository.m */,
 				817E3E6D16216E3400DDB74E /* BaseModel.h */,
 				817E3E6E16216E3400DDB74E /* BaseModel.m */,
 				812CA1F3162DED2D00B53B7E /* User.h */,
@@ -379,6 +384,7 @@
 				817E3EA81621728800DDB74E /* LoginViewController.m in Sources */,
 				817E3EAB1621745A00DDB74E /* AppNavigationController.m in Sources */,
 				812CA1F5162DED2D00B53B7E /* User.m in Sources */,
+				818D948F1633D6730046B1AD /* DesignRepository.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -451,12 +457,13 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				PROVISIONING_PROFILE = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";
 				SDKROOT = iphoneos;
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Debug;
 		};
@@ -476,7 +483,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				PROVISIONING_PROFILE = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";
@@ -484,6 +491,7 @@
 				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
+				VALID_ARCHS = "armv7 armv7s";
 			};
 			name = Release;
 		};
@@ -505,11 +513,13 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -532,11 +542,13 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 				);
+				ONLY_ACTIVE_ARCH = YES;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";
 				SDKROOT = iphoneos;
+				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

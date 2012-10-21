@@ -11,7 +11,6 @@
 @interface BaseModel : CouchModel
 
 + (CouchDesignDocument *) design;
-+ (CouchDesignDocument *) initDesignDocument;
 + (void) defineViews;
 - (void) save;
 
