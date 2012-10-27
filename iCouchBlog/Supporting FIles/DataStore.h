@@ -10,6 +10,9 @@
 
 @interface DataStore : NSObject
 
+#define kDatabaseName @"icouch-blog"
+#define kSyncURL @"http://192.168.0.102:5984/couchblog/"
+
 + (CouchDatabase *) currentDatabase;
 
 @end

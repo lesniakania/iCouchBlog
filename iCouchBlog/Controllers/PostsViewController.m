@@ -6,35 +6,33 @@
 //  Copyright (c) 2012 Anna Lesniak. All rights reserved.
 //
 
-#import "AppDelegate.h"
+#import "AppNavigationController.h"
 #import "PostsViewController.h"
 #import "DetailViewController.h"
 #import "EditPostViewController.h"
 #import "Post.h"
+#import "Replicator.h"
 
 @implementation PostsViewController
 
 - (void) viewDidLoad {
   [super viewDidLoad];
-  self.navigationItem.leftBarButtonItem = self.editButtonItem;
   
   [self.navigationController.navigationBar setTintColor: [UIColor navigationBarColor]];
   self.tableView.backgroundColor = [UIColor lightBackgroundColor];
   self.tableView.separatorColor = [UIColor tableSeparatorColor];
   
   // TODO: move it to some method and add pull to refresh
-  NSArray *replications = [[DataStore currentDatabase] replicateWithURL: [NSURL URLWithString: kSyncURL] exclusively: YES];
-  CouchPersistentReplication *pull = [replications objectAtIndex: 0];
-  pull.filter = @"Post/for_user";
-  pull.query_params = @{ @"user_id": @"75d651fda6012650a1d573795b1f46c5" };
+  [[Replicator currentReplicator] replicateWithFilterNamed: @"Post/for_user"
+                                              filterParams: @{ @"user_id": [[[User current] document] documentID] }
+                                                    target: nil callback: @selector(callback:)
+                                                continuous: YES];
   
-  
-  CouchLiveQuery* query = [[[[DataStore currentDatabase] designDocumentWithName: @"posts"]
-                            queryViewNamed: @"byTitle"] asLiveQuery];
+  CouchLiveQuery* query = [[[Post design] queryViewNamed: @"byTitle"] asLiveQuery];
   self.dataSource.query = query;
 }
 
-- (void) viewWillAppear:(BOOL)animated {
+- (void) viewWillAppear: (BOOL) animated {
   [super viewWillAppear: animated];
   [self.dataSource.query start];
 }
@@ -72,6 +70,13 @@
     Post *newPost = [[Post alloc] init];
     [[segue destinationViewController] setPost: newPost];
   }
+}
+
+- (void) logout {
+  User *currentUser = [User current];
+  [currentUser logout];
+  id rootController = [self.storyboard instantiateViewControllerWithIdentifier: @"LoginViewController"];
+  self.navigationController.viewControllers = [NSArray arrayWithObjects: rootController, nil];
 }
 
 @end

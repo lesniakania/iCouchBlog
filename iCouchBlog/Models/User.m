@@ -7,22 +7,41 @@
 //
 
 #import "User.h"
+#import "Post.h"
 
 #define UserEmailSettingsKey @"UserEmailSettingsKey"
+
+static User *currentUser;
 
 @implementation User
 
 + (void) defineViews {
   [[[self class] design] defineViewNamed: @"byEmail" mapBlock: MAPBLOCK({
+    NSString *type = [doc objectForKey: @"type"];
     id email = [doc objectForKey: @"email"];
-    if (email) emit(email, doc);
+    if ([type isEqualToString: @"User"] && email) emit(email, doc);
   }) version: @"1.0"];
+}
+
++ (User *) current {
+  if (!currentUser) {
+    NSString *email = [User emailFromSettings];
+    if (email) {
+      currentUser = [User findByEmail: email];
+    }
+  }
+  return currentUser;
 }
 
 + (User *) findByEmail: (NSString *) anEmail {
   CouchQuery *query = [[self design] queryViewNamed: @"byEmail"];
   query.keys = @[anEmail];
-  return [[query.rows nextRow] value];
+  NSDictionary *values = [[query.rows nextRow] value];
+  if (values) {
+    return [User modelForDocumentWithId: [values objectForKey: @"_id"]];
+  } else {
+    return nil;
+  }
 }
 
 + (User *) findOrCreateByEmail: (NSString *) anEmail {
@@ -35,14 +54,34 @@
   return user;
 }
 
+
+- (void) addPost: (Post *) post {
+  NSString *postId = [[post document] documentID];
+  NSMutableArray *posts = [NSMutableArray arrayWithArray: [self getValueOfProperty: @"post_ids"]];
+  if (![posts containsObject: postId]) {
+    [posts addObject: postId];
+    [self setValue: posts ofProperty: @"post_ids"];
+  }
+  [self save];
+}
+
+
+
 + (NSString *) emailFromSettings {
   NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
   return [settings objectForKey: UserEmailSettingsKey];
 }
 
-- (void) login {
++ (BOOL) loginWithEmail: (NSString *) email {
   NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
-  [settings setObject: [self getValueOfProperty: @"email"] forKey: UserEmailSettingsKey];
+  [settings setObject: email forKey: UserEmailSettingsKey];
+  [settings synchronize];
+  return [User current] != nil;
+}
+
+- (void) logout {
+  NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
+  [settings removeObjectForKey: UserEmailSettingsKey];
   [settings synchronize];
 }
 

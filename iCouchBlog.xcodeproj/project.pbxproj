@@ -27,6 +27,7 @@
 		818D789815F124A800F32171 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 818D789715F124A800F32171 /* libz.dylib */; };
 		818D789915F1251A00F32171 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 818D788F15F1246500F32171 /* SystemConfiguration.framework */; };
 		818D948F1633D6730046B1AD /* DesignRepository.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D948E1633D6730046B1AD /* DesignRepository.m */; };
+		818D949716340EBB0046B1AD /* Replicator.m in Sources */ = {isa = PBXBuildFile; fileRef = 818D949616340EBB0046B1AD /* Replicator.m */; };
 		8191D08D15EA382600591DC5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8191D08C15EA382600591DC5 /* UIKit.framework */; };
 		8191D08F15EA382600591DC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8191D08E15EA382600591DC5 /* Foundation.framework */; };
 		8191D09115EA382600591DC5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8191D09015EA382600591DC5 /* CoreGraphics.framework */; };
@@ -85,6 +86,8 @@
 		818D789715F124A800F32171 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		818D948D1633D6730046B1AD /* DesignRepository.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignRepository.h; sourceTree = "<group>"; };
 		818D948E1633D6730046B1AD /* DesignRepository.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignRepository.m; sourceTree = "<group>"; };
+		818D949516340EBB0046B1AD /* Replicator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Replicator.h; sourceTree = "<group>"; };
+		818D949616340EBB0046B1AD /* Replicator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Replicator.m; sourceTree = "<group>"; };
 		8191D08815EA382600591DC5 /* iCouchBlog.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iCouchBlog.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8191D08C15EA382600591DC5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8191D08E15EA382600591DC5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -136,6 +139,8 @@
 			children = (
 				817E3E9216216E7B00DDB74E /* AppDelegate.h */,
 				817E3E9316216E7B00DDB74E /* AppDelegate.m */,
+				818D949516340EBB0046B1AD /* Replicator.h */,
+				818D949616340EBB0046B1AD /* Replicator.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -385,6 +390,7 @@
 				817E3EAB1621745A00DDB74E /* AppNavigationController.m in Sources */,
 				812CA1F5162DED2D00B53B7E /* User.m in Sources */,
 				818D948F1633D6730046B1AD /* DesignRepository.m in Sources */,
+				818D949716340EBB0046B1AD /* Replicator.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

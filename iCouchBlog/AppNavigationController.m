@@ -11,17 +11,10 @@
 
 @implementation AppNavigationController
 
-static User *currentUser;
-
 - (void) viewDidLoad {
   id rootController;
   
-  NSString *email = [User emailFromSettings];
-  if (email) {
-    currentUser = [User findByEmail: email];
-  }
-  
-  if (currentUser) {
+  if ([User current]) {
     rootController = [self.storyboard instantiateViewControllerWithIdentifier: @"PostsViewController"];
   } else {
     rootController = [self.storyboard instantiateViewControllerWithIdentifier: @"LoginViewController"];

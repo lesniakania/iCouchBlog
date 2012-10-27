@@ -15,4 +15,6 @@
 
 @property (strong, nonatomic) IBOutlet CouchUITableSource* dataSource;
 
+- (IBAction) logout;
+
 @end

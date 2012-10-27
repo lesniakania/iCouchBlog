@@ -66,6 +66,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Posts" id="36">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="w6y-V1-cC0">
+                            <connections>
+                                <action selector="logout" destination="12" id="JxH-1P-po1"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="gmA-6p-OC5">
                             <connections>
                                 <segue destination="0sS-sz-tH0" kind="push" identifier="addPost" id="DrW-dV-xy5"/>
@@ -311,6 +316,7 @@
         <class className="PostsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PostsViewController.h"/>
             <relationships>
+                <relationship kind="action" name="logout"/>
                 <relationship kind="outlet" name="dataSource" candidateClass="CouchUITableSource"/>
             </relationships>
         </class>

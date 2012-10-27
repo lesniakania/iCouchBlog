@@ -8,11 +8,18 @@
 
 #import "BaseModel.h"
 
+@class Post;
+
 @interface User : BaseModel
 
++ (User *) current;
 + (User *) findByEmail: (NSString *) anEmail;
 + (User *) findOrCreateByEmail: (NSString *) anEmail;
+
+- (void) addPost: (Post *) post;
+
 + (NSString *) emailFromSettings;
-- (void) login;
++ (BOOL) loginWithEmail: (NSString *) email;
+- (void) logout;
 
 @end

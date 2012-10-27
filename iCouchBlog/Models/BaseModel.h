@@ -12,6 +12,8 @@
 
 + (CouchDesignDocument *) design;
 + (void) defineViews;
-- (void) save;
+
++ (id) modelForDocumentWithId: (NSString *) docId;
++ (NSDateFormatter *) dateFormatter;
 
 @end

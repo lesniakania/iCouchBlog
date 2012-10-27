@@ -7,16 +7,26 @@
 //
 
 #import "EditPostViewController.h"
+#import "User.h"
 
 @implementation EditPostViewController
 
 - (void) savePressed {
   [self.post setValue: self.titleView.text ofProperty: @"title"];
   [self.post setValue: self.bodyView.text ofProperty: @"body"];
+  NSDate *now = [NSDate date];
+  [self.post setValue: [[Post dateFormatter] stringFromDate: now] ofProperty: @"updated_at"];
 
-  [self.post save];
-  
-  [self.navigationController popToRootViewControllerAnimated: YES];
+  RESTOperation *op = [self.post save];
+  [op onCompletion: ^{
+    if (op.error) {
+      NSLog(@"Couldn't save the post %@", self);
+    } else {
+      [[User current] addPost: self.post];
+      [self.navigationController popToRootViewControllerAnimated: YES];
+    }
+	}];
+  [op start];
 }
 
 @end

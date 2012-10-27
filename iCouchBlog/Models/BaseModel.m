@@ -11,6 +11,8 @@
 
 @implementation BaseModel
 
+static NSDateFormatter *dateFormatter;
+
 + (CouchDesignDocument *) design {
   NSString *className = NSStringFromClass(self);
   return [DesignRepository designForClass: className];
@@ -19,17 +21,28 @@
 + (void) defineViews {}
 
 - (id) init {
-  return [self initWithNewDocumentInDatabase: [DataStore currentDatabase]];
+  self = [self initWithNewDocumentInDatabase: [DataStore currentDatabase]];
+  if (self) {
+    [self setValue: NSStringFromClass([self class]) ofProperty: @"type"];
+    
+    NSDate *now = [NSDate date];
+    [self setValue: [[[self class] dateFormatter] stringFromDate: now] ofProperty: @"created_at"];
+  }
+  return self;
 }
 
-- (void) save {
-  RESTOperation *op = [super save];
-  [op onCompletion: ^{
-    if (op.error)
-      NSLog(@"Couldn't save the post %@", self);
-	}];
-  [op start];
++ (id) modelForDocumentWithId: (NSString *) docId {
+  CouchDocument *document = [[DataStore currentDatabase] documentWithID: docId];
+  return [[self class] modelForDocument: document];
 }
 
++ (NSDateFormatter *) dateFormatter {
+  if (!dateFormatter) {
+    dateFormatter = [[NSDateFormatter alloc] init];
+  }
+  [dateFormatter setDateFormat: @"yyyy-MM-ddTHH:mm.sssZ"];
+  
+  return dateFormatter;
+}
 
 @end

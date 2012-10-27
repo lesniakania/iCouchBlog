@@ -8,6 +8,7 @@
 
 #import "LoginViewController.h"
 #import "User.h"
+#import "Replicator.h"
 
 @implementation LoginViewController
 
@@ -27,11 +28,36 @@
 
 - (void) performLogin {
   NSString *email = self.emailTextField.text;
-  User *user = [User findOrCreateByEmail: email];
-  [user login];
   
+  User *user = [User findByEmail: email];
+  NSDictionary *filterParams = @{ @"email": email };
+  if (user) {
+    [self loginWith: filterParams];
+  } else {
+    [[Replicator currentReplicator] pullWithFilterNamed: @"User/for_email"
+                                           filterParams: filterParams
+                                                 target: self
+                                               callback: @selector(loginWith:)
+                                             continuous: NO];
+  }
+}
+
+- (void) loginWith: (NSDictionary *) filterParams {
+  NSString *email = [filterParams objectForKey: @"email"];
+  if ([User loginWithEmail: email]) {
+    [self loginSuccessful];
+  } else {
+    [self loginFailed];
+  }
+}
+
+- (void) loginSuccessful {
   id rootController = [self.storyboard instantiateViewControllerWithIdentifier: @"PostsViewController"];
-  self.navigationController.viewControllers = [NSArray arrayWithObjects:rootController, nil];
+  self.navigationController.viewControllers = [NSArray arrayWithObjects: rootController, nil];
+}
+
+- (void) loginFailed {
+  [[[UIAlertView alloc] initWithTitle: @"Login Error" message: @"Login failed." delegate: self cancelButtonTitle: @"Ok" otherButtonTitles: nil] show];
 }
 
 - (BOOL) textFieldShouldReturn: (UITextField *) theTextField {
