@@ -17,4 +17,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *bodyView;
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *bodyLabel;
+
+- (IBAction) deletePressed;
+
 @end

@@ -36,6 +36,14 @@
   [self configureView];
 }
 
+- (IBAction) deletePressed {
+  RESTOperation *deleteOp = [self.post deleteDocument];
+  [deleteOp onCompletion: ^{
+    [self.navigationController popViewControllerAnimated: YES];
+  }];
+  [deleteOp start];
+}
+
 - (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id)sender {
   if ([[segue identifier] isEqualToString: @"editPost"]) {
     [[segue destinationViewController] setPost: self.post];
