@@ -14,6 +14,9 @@
 #import "Replicator.h"
 
 @implementation PostsViewController
+{
+  PullToRefreshView *pull;
+}
 
 - (void) viewDidLoad {
   [super viewDidLoad];
@@ -22,14 +25,25 @@
   self.tableView.backgroundColor = [UIColor lightBackgroundColor];
   self.tableView.separatorColor = [UIColor tableSeparatorColor];
   
-  // TODO: move it to some method and add pull to refresh
+  pull = [[PullToRefreshView alloc] initWithScrollView: (UIScrollView *) self.tableView];
+  [pull setDelegate: self];
+  [self.tableView addSubview: pull];
+    
+  CouchLiveQuery* query = [[[Post design] queryViewNamed: @"byTitle"] asLiveQuery];
+  self.dataSource.query = query;
+}
+
+- (void) pullToRefreshViewShouldRefresh: (PullToRefreshView *) view {
+  [self performSelectorInBackground: @selector(reloadTableData) withObject: nil];
+}
+
+- (void) reloadTableData {
   [[Replicator currentReplicator] replicateWithFilterNamed: @"Post/for_user"
                                               filterParams: @{ @"user_id": [[[User current] document] documentID] }
                                                     target: nil callback: @selector(callback:)
                                                 continuous: YES];
-  
-  CouchLiveQuery* query = [[[Post design] queryViewNamed: @"byTitle"] asLiveQuery];
-  self.dataSource.query = query;
+  [self.dataSource.query start];
+  [pull finishedLoading];
 }
 
 - (void) viewWillAppear: (BOOL) animated {

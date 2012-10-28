@@ -10,8 +10,8 @@
 
 @interface Replicator : NSObject
 
-@property (weak, nonatomic) CouchPersistentReplication *pull;
-@property (weak, nonatomic) CouchPersistentReplication *push;
+@property (strong, nonatomic) CouchPersistentReplication *pull;
+@property (strong, nonatomic) CouchPersistentReplication *push;
 @property (strong, nonatomic) id target;
 @property (nonatomic) SEL callback;
 @property (strong, nonatomic) NSDictionary *filterParams;

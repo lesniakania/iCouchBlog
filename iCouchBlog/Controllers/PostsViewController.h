@@ -8,10 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import <CouchCocoa/CouchUITableSource.h>
+#import "PullToRefreshView.h"
 
 @class DetailViewController;
 
-@interface PostsViewController : UITableViewController <CouchUITableDelegate>
+@interface PostsViewController : UITableViewController <CouchUITableDelegate, PullToRefreshViewDelegate>
 
 @property (strong, nonatomic) IBOutlet CouchUITableSource* dataSource;
 

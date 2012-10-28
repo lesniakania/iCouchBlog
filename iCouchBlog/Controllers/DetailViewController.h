@@ -13,10 +13,10 @@
 
 @property (strong, nonatomic) Post *post;
 
-@property (weak, nonatomic) IBOutlet UITextView *titleView;
-@property (weak, nonatomic) IBOutlet UITextView *bodyView;
-@property (weak, nonatomic) IBOutlet UILabel *titleLabel;
-@property (weak, nonatomic) IBOutlet UILabel *bodyLabel;
+@property (strong, nonatomic) IBOutlet UITextView *titleView;
+@property (strong, nonatomic) IBOutlet UITextView *bodyView;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *bodyLabel;
 
 - (IBAction) deletePressed;
 

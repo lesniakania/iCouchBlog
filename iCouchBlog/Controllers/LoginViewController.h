@@ -10,8 +10,8 @@
 
 @interface LoginViewController : UITableViewController <UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UILabel *emailLabel;
-@property (weak, nonatomic) IBOutlet UITextField *emailTextField;
+@property (strong, nonatomic) IBOutlet UILabel *emailLabel;
+@property (strong, nonatomic) IBOutlet UITextField *emailTextField;
 
 - (IBAction) performLogin;
 
