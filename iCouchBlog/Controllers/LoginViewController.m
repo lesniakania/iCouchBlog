@@ -8,7 +8,7 @@
 
 #import "LoginViewController.h"
 #import "User.h"
-#import "Connector.h"
+#import "Replicator.h"
 
 @implementation LoginViewController
 
@@ -33,17 +33,18 @@
   if (user) {
     [self performLoginWithUser: user];
   } else {
-    user = [User createWith: [Connector loginUserWithEmail: email]];
-    RESTOperation *op = [user save];
-    [op onCompletion: ^{
-      if (op.error) {
-        NSLog(@"Couldn't save the user %@, error: %@", user, op.error);
-      } else {
-        [self performLoginWithUser: user];
-      }
-    }];
-    [op start];
+    [[Replicator currentReplicator] replicateWithFilterNamed: @"User/for_email"
+                                                filterParams: @{ @"email": email }
+                                                      target: self
+                                                    callback: @selector(performLoginWithParams:)
+                                                  continuous: YES];
   }  
+}
+
+- (void) performLoginWithParams: (NSDictionary *) params {
+  NSString *email = [params objectForKey: @"email"];
+  User *user = [User findByEmail: email];
+  [self performLoginWithUser: user];
 }
 
 - (void) performLoginWithUser: (User *) user {

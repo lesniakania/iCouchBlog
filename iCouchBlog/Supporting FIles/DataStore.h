@@ -7,12 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "Connector.h"
 
 @interface DataStore : NSObject
 
 #define kDatabaseName @"icouch-blog"
-#define kSyncURL [NSString stringWithFormat: @"http://%@:5984/couchblog/", kHOST]
+#define kSyncURL @"http://192.168.0.110:5984/couchblog/"
 
 + (CouchDatabase *) currentDatabase;
 

@@ -42,8 +42,6 @@
 		8191D0BE15EA382700591DC5 /* iCouchBlogTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8191D0BD15EA382700591DC5 /* iCouchBlogTests.m */; };
 		81C04D5D16B7EFB80007F535 /* CouchCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81C04D1516B7EB7B0007F535 /* CouchCocoa.framework */; };
 		81C04D5E16B7EFB80007F535 /* TouchDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81C04D1616B7EB7B0007F535 /* TouchDB.framework */; };
-		81C04D6116B807540007F535 /* Connector.m in Sources */ = {isa = PBXBuildFile; fileRef = 81C04D6016B807540007F535 /* Connector.m */; };
-		81C04D6316B80B110007F535 /* YAJLiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81C04D6216B80B110007F535 /* YAJLiOS.framework */; };
 		81F7DBC3162DC7C600BE8DDB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81F7DBC2162DC7C600BE8DDB /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
@@ -111,9 +109,6 @@
 		8191D0BD15EA382700591DC5 /* iCouchBlogTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iCouchBlogTests.m; sourceTree = "<group>"; };
 		81C04D1516B7EB7B0007F535 /* CouchCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CouchCocoa.framework; path = iCouchBlog/Frameworks/CouchCocoa.framework; sourceTree = "<group>"; };
 		81C04D1616B7EB7B0007F535 /* TouchDB.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TouchDB.framework; path = iCouchBlog/Frameworks/TouchDB.framework; sourceTree = "<group>"; };
-		81C04D5F16B807540007F535 /* Connector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Connector.h; sourceTree = "<group>"; };
-		81C04D6016B807540007F535 /* Connector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Connector.m; sourceTree = "<group>"; };
-		81C04D6216B80B110007F535 /* YAJLiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YAJLiOS.framework; path = iCouchBlog/Frameworks/YAJLiOS.framework; sourceTree = "<group>"; };
 		81F7DBC2162DC7C600BE8DDB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -133,7 +128,6 @@
 				8191D08D15EA382600591DC5 /* UIKit.framework in Frameworks */,
 				8191D08F15EA382600591DC5 /* Foundation.framework in Frameworks */,
 				8191D09115EA382600591DC5 /* CoreGraphics.framework in Frameworks */,
-				81C04D6316B80B110007F535 /* YAJLiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -157,8 +151,6 @@
 				817E3E9316216E7B00DDB74E /* AppDelegate.m */,
 				818D949516340EBB0046B1AD /* Replicator.h */,
 				818D949616340EBB0046B1AD /* Replicator.m */,
-				81C04D5F16B807540007F535 /* Connector.h */,
-				81C04D6016B807540007F535 /* Connector.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -207,7 +199,6 @@
 		8191D08B15EA382600591DC5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				81C04D6216B80B110007F535 /* YAJLiOS.framework */,
 				81C04D1516B7EB7B0007F535 /* CouchCocoa.framework */,
 				81C04D1616B7EB7B0007F535 /* TouchDB.framework */,
 				81866C9E163D335B00395045 /* QuartzCore.framework */,
@@ -435,7 +426,6 @@
 				818D948F1633D6730046B1AD /* DesignRepository.m in Sources */,
 				818D949716340EBB0046B1AD /* Replicator.m in Sources */,
 				81866C9C163D2F7100395045 /* PullToRefreshView.m in Sources */,
-				81C04D6116B807540007F535 /* Connector.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

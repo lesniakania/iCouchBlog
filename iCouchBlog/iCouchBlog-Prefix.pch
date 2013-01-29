@@ -14,7 +14,6 @@
   #import <CouchCocoa/CouchCocoa.h>
   #import <CouchCocoa/CouchTouchDBServer.h>
   #import <CouchCocoa/CouchDesignDocument_Embedded.h>
-  #import <YAJLiOS/YAJL.h>
 
   #import "DataStore.h"
   #import "Colors.h"

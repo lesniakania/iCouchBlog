@@ -48,7 +48,7 @@
   [pull finishedLoading];*/
   
   // TODO: remove below
-  [[Replicator currentReplicator] startReplication];
+  //[[Replicator currentReplicator] startReplication];
 }
 
 - (void) viewWillAppear: (BOOL) animated {

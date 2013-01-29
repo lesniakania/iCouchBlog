@@ -23,24 +23,6 @@ static Replicator *replicator;
   return replicator;
 }
 
-- (void) startReplication {
-  [self forgetSync];
-  
-  NSArray* repls = [[DataStore currentDatabase] replicateWithURL: [NSURL URLWithString: kSyncURL]
-                                                     exclusively: YES];
-  self.pull = [repls objectAtIndex: 0];
-  self.push = [repls objectAtIndex: 1];
-  [self.pull addObserver: self forKeyPath: @"completed" options: 0 context: NULL];
-  [self.push addObserver: self forKeyPath: @"completed" options: 0 context: NULL];
-}
-
-- (void) forgetSync {
-  [self.pull removeObserver: self forKeyPath: @"completed"];
-  self.pull = nil;
-  [self.push removeObserver: self forKeyPath: @"completed"];
-  self.push = nil;
-}
-
 - (void) observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
                          change:(NSDictionary *)change context:(void *)context
 {
@@ -52,8 +34,7 @@ static Replicator *replicator;
       
     } else {
       NSLog(@"COMPLETED!");
-      //[self.target performSelector: self.callback withObject: self.filterParams];
-      [self.target performSelector: self.callback];
+      [self.target performSelector: self.callback withObject: self.filterParams];
     }
   }
 }
@@ -67,7 +48,7 @@ static Replicator *replicator;
   [self forgetLastReplication];
   NSArray* replications = [[DataStore currentDatabase] replicateWithURL: [NSURL URLWithString: kSyncURL]
                                                             exclusively: YES];
-  //self.filterParams = filterParams;
+  self.filterParams = filterParams;
   
   self.pull = [replications objectAtIndex: 0];
   //self.pull.filter = filterName;
