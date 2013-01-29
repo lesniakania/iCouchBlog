@@ -44,16 +44,14 @@ static User *currentUser;
   }
 }
 
-+ (User *) findOrCreateByEmail: (NSString *) anEmail {
-  User *user = [User findByEmail: anEmail];
-  if (!user) {
-    user = [[User alloc] init];
-    [user setValue: anEmail ofProperty: @"email"];
-    [user save];
-  }
++ (User *) createWith: (NSDictionary *) hash {
+  User *user = [[User alloc] init];
+  [user setValue: [hash objectForKey: @"email"] ofProperty: @"email"];
+  [user setValue: [hash objectForKey: @"_id"] ofProperty: @"serverRecordId"];
+  [user setValue: [hash objectForKey: @"created_at"] ofProperty: @"created_at"];
+  [user setValue: [hash objectForKey: @"updated_at"] ofProperty: @"updated_at"];
   return user;
 }
-
 
 - (void) addPost: (Post *) post {
   NSString *postId = [[post document] documentID];
@@ -66,16 +64,18 @@ static User *currentUser;
 }
 
 
-
 + (NSString *) emailFromSettings {
   NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
   return [settings objectForKey: UserEmailSettingsKey];
 }
 
-+ (BOOL) loginWithEmail: (NSString *) email {
+- (BOOL) login {
+  NSString *email = [self getValueOfProperty: @"email"];
+
   NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
   [settings setObject: email forKey: UserEmailSettingsKey];
   [settings synchronize];
+  
   return [User current] != nil;
 }
 

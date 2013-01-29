@@ -8,7 +8,7 @@
 
 #import "LoginViewController.h"
 #import "User.h"
-#import "Replicator.h"
+#import "Connector.h"
 
 @implementation LoginViewController
 
@@ -26,25 +26,28 @@
   cell.backgroundColor = [UIColor backgroundColor];
 }
 
-- (void) performLogin {
+- (void) loginPressed {
   NSString *email = self.emailTextField.text;
   
   User *user = [User findByEmail: email];
-  NSDictionary *filterParams = @{ @"email": email };
   if (user) {
-    [self loginWith: filterParams];
+    [self performLoginWithUser: user];
   } else {
-    [[Replicator currentReplicator] pullWithFilterNamed: @"User/for_email"
-                                           filterParams: filterParams
-                                                 target: self
-                                               callback: @selector(loginWith:)
-                                             continuous: NO];
-  }
+    user = [User createWith: [Connector loginUserWithEmail: email]];
+    RESTOperation *op = [user save];
+    [op onCompletion: ^{
+      if (op.error) {
+        NSLog(@"Couldn't save the user %@, error: %@", user, op.error);
+      } else {
+        [self performLoginWithUser: user];
+      }
+    }];
+    [op start];
+  }  
 }
 
-- (void) loginWith: (NSDictionary *) filterParams {
-  NSString *email = [filterParams objectForKey: @"email"];
-  if ([User loginWithEmail: email]) {
+- (void) performLoginWithUser: (User *) user {
+  if ([user login]) {
     [self loginSuccessful];
   } else {
     [self loginFailed];
@@ -53,7 +56,7 @@
 
 - (void) loginSuccessful {
   id rootController = [self.storyboard instantiateViewControllerWithIdentifier: @"PostsViewController"];
-  self.navigationController.viewControllers = [NSArray arrayWithObjects: rootController, nil];
+  self.navigationController.viewControllers = @[rootController];
 }
 
 - (void) loginFailed {
@@ -61,7 +64,7 @@
 }
 
 - (BOOL) textFieldShouldReturn: (UITextField *) theTextField {
-  [self performLogin];
+  [self loginPressed];
   return YES;
 }
 

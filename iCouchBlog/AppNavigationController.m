@@ -19,7 +19,7 @@
   } else {
     rootController = [self.storyboard instantiateViewControllerWithIdentifier: @"LoginViewController"];
   }
-  self.viewControllers = [NSArray arrayWithObjects:rootController, nil];
+  self.viewControllers = @[rootController];
 }
 
 @end

@@ -12,9 +12,13 @@
 
 @class DetailViewController;
 
-@interface PostsViewController : UITableViewController <CouchUITableDelegate, PullToRefreshViewDelegate>
+@interface PostsViewController : UITableViewController <CouchUITableDelegate, PullToRefreshViewDelegate> {
+  CouchPersistentReplication* _pull;
+  CouchPersistentReplication* _push;
+}
 
 @property (strong, nonatomic) IBOutlet CouchUITableSource* dataSource;
+
 
 - (IBAction) logout;
 

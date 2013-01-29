@@ -216,7 +216,7 @@
                     <navigationItem key="navigationItem" title="Login" id="RbU-9a-1uz">
                         <barButtonItem key="rightBarButtonItem" title="Login" id="oBI-Lv-iKK">
                             <connections>
-                                <action selector="performLogin" destination="fGt-Bt-KGd" id="pwA-oa-bXh"/>
+                                <action selector="loginPressed" destination="fGt-Bt-KGd" id="VBl-Ht-9rR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -323,7 +323,7 @@
         <class className="LoginViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoginViewController.h"/>
             <relationships>
-                <relationship kind="action" name="performLogin"/>
+                <relationship kind="action" name="loginPressed"/>
                 <relationship kind="outlet" name="emailLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="emailTextField" candidateClass="UITextField"/>
             </relationships>

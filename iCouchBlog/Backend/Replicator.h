@@ -18,6 +18,8 @@
 
 + (Replicator *) currentReplicator;
 
+- (void) startReplication;
+
 - (void) forgetLastReplication;
 
 - (void) replicateWithFilterNamed: (NSString *) filterName

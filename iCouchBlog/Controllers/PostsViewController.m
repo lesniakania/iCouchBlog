@@ -25,12 +25,14 @@
   self.tableView.backgroundColor = [UIColor lightBackgroundColor];
   self.tableView.separatorColor = [UIColor tableSeparatorColor];
   
-  pull = [[PullToRefreshView alloc] initWithScrollView: (UIScrollView *) self.tableView];
-  [pull setDelegate: self];
-  [self.tableView addSubview: pull];
-    
+  //pull = [[PullToRefreshView alloc] initWithScrollView: (UIScrollView *) self.tableView];
+  //[pull setDelegate: self];
+  //[self.tableView addSubview: pull];
+  
   CouchLiveQuery* query = [[[Post design] queryViewNamed: @"byTitle"] asLiveQuery];
   self.dataSource.query = query;
+    
+  [self reloadTableData];
 }
 
 - (void) pullToRefreshViewShouldRefresh: (PullToRefreshView *) view {
@@ -38,17 +40,21 @@
 }
 
 - (void) reloadTableData {
-  [[Replicator currentReplicator] replicateWithFilterNamed: @"Post/for_user"
+  /*[[Replicator currentReplicator] replicateWithFilterNamed: @"Post/for_user"
                                               filterParams: @{ @"user_id": [[[User current] document] documentID] }
                                                     target: nil callback: @selector(callback:)
                                                 continuous: YES];
   [self.dataSource.query start];
-  [pull finishedLoading];
+  [pull finishedLoading];*/
+  
+  // TODO: remove below
+  [[Replicator currentReplicator] startReplication];
 }
 
 - (void) viewWillAppear: (BOOL) animated {
   [super viewWillAppear: animated];
-  [self.dataSource.query start];
+  
+  [self reloadTableData];
 }
 
 #pragma mark - Table View

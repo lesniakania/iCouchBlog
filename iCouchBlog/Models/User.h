@@ -14,12 +14,13 @@
 
 + (User *) current;
 + (User *) findByEmail: (NSString *) anEmail;
-+ (User *) findOrCreateByEmail: (NSString *) anEmail;
 
 - (void) addPost: (Post *) post;
 
++ (User *) createWith: (NSDictionary *) hash;
+
 + (NSString *) emailFromSettings;
-+ (BOOL) loginWithEmail: (NSString *) email;
+- (BOOL) login;
 - (void) logout;
 
 @end

@@ -33,7 +33,7 @@ static CouchDatabase *currentDatabase;
       return nil;
     }
     
-    //database.tracksChanges = YES;
+    currentDatabase.tracksChanges = YES;
   }
   return currentDatabase;
 }
