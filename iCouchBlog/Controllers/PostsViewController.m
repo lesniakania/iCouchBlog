@@ -40,15 +40,13 @@
 }
 
 - (void) reloadTableData {
-  /*[[Replicator currentReplicator] replicateWithFilterNamed: @"Post/for_user"
+  [[Replicator currentReplicator] replicateWithFilterNamed: @"Post/for_user"
                                               filterParams: @{ @"user_id": [[[User current] document] documentID] }
-                                                    target: nil callback: @selector(callback:)
+                                                    target: nil
+                                                  callback: @selector(callback:)
                                                 continuous: YES];
-  [self.dataSource.query start];
-  [pull finishedLoading];*/
-  
-  // TODO: remove below
-  //[[Replicator currentReplicator] startReplication];
+  //[self.dataSource.query start];
+  //[pull finishedLoading];
 }
 
 - (void) viewWillAppear: (BOOL) animated {
