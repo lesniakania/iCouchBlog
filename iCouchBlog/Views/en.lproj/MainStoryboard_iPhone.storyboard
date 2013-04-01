@@ -131,7 +131,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Post detail" id="26">
-                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="bYs-92-T9F"/>
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="bYs-92-T9F">
+                            <connections>
+                                <segue destination="0sS-sz-tH0" kind="push" identifier="editPost" id="6uP-o1-niC"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
@@ -259,4 +263,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="6uP-o1-niC"/>
+    </inferredMetricsTieBreakers>
 </document>
