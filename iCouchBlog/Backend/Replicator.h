@@ -8,15 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+#define kSyncURL @"http://192.168.0.114:5984/couchblog/"
+
 @interface Replicator : NSObject
 
-@property (strong, nonatomic) CouchPersistentReplication *pull;
-@property (strong, nonatomic) CouchPersistentReplication *push;
+@property (strong, nonatomic) CBLReplication *pull;
+@property (strong, nonatomic) CBLReplication *push;
 @property (strong, nonatomic) id target;
 @property (nonatomic) SEL callback;
 @property (strong, nonatomic) NSDictionary *filterParams;
-
-+ (Replicator *) currentReplicator;
 
 - (void) forgetLastReplication;
 
@@ -25,11 +25,5 @@
                            target: (id) target
                          callback: (SEL) callback
                        continuous: (BOOL) continuous;
-
-- (void) pullWithFilterNamed: (NSString *) filterName
-                filterParams: (NSDictionary *) filterParams
-                      target: (id) target
-                    callback: (SEL) callback
-                  continuous: (BOOL) continuous;
 
 @end

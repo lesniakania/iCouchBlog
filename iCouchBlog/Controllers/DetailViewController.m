@@ -37,11 +37,13 @@
 }
 
 - (IBAction) deletePressed {
-  RESTOperation *deleteOp = [self.post deleteDocument];
-  [deleteOp onCompletion: ^{
+  NSError *error;
+  [self.post deleteDocument: &error];
+  if (error) {
+    NSLog(@"Error while deleting post: %@.", [error localizedDescription]);
+  } else {
     [self.navigationController popViewControllerAnimated: YES];
-  }];
-  [deleteOp start];
+  }
 }
 
 - (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id)sender {

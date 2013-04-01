@@ -7,19 +7,31 @@
 //
 
 #import "AppDelegate.h"
-#import "User.h"
 #import "Post.h"
 
-@class User, Post;
+@class Post;
 
 @implementation AppDelegate
 
 - (BOOL) application: (UIApplication *) application didFinishLaunchingWithOptions: (NSDictionary *) launchOptions {
-  for (id klass in @[[User class], [Post class]]) {
+  [self setupDatabase];
+  
+  for (id klass in @[[Post class]]) {
     [klass defineViews];
   }
   
+  self.postsReplicator = [[Replicator alloc] init];
+  
   return YES;
+}
+
+- (void) setupDatabase {
+  NSError* error;
+  self.database = [[CBLManager sharedInstance] createDatabaseNamed: kDatabaseName
+                                                             error: &error];
+  if (!self.database) {
+    NSLog(@"Failed setuping database: %@.", [error localizedDescription]);
+  }
 }
 
 @end

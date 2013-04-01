@@ -7,19 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <CouchCocoa/CouchUITableSource.h>
-#import "PullToRefreshView.h"
+#import <Couchbaselite/CBLUITableSource.h>
 
 @class DetailViewController;
 
-@interface PostsViewController : UITableViewController <CouchUITableDelegate, PullToRefreshViewDelegate> {
-  CouchPersistentReplication* _pull;
-  CouchPersistentReplication* _push;
-}
+@interface PostsViewController : UITableViewController <CBLUITableDelegate>
 
-@property (strong, nonatomic) IBOutlet CouchUITableSource* dataSource;
-
-
-- (IBAction) logout;
+@property (strong, nonatomic) IBOutlet CBLUITableSource* dataSource;
 
 @end

@@ -7,22 +7,21 @@
 //
 
 #import "Post.h"
-#import "User.h"
 
 @implementation Post
 
 + (void) defineViews {
-  [[[self class] design] defineViewNamed: @"byTitle" mapBlock: MAPBLOCK({
+  [[[DataStore currentDatabase] viewNamed: @"postsByTitle"] setMapBlock: MAPBLOCK({
     NSString *type = [doc objectForKey: @"type"];
     id title = [doc objectForKey: @"title"];
     if ([type isEqualToString: @"Post"] && title) emit(title, doc);
-  }) version: @"1.0"];
+  }) reduceBlock: nil version: @"1.0"];
 }
 
 - (id) init {
   self = [super init];
   if (self) {
-    [self setValue: [[[User current] document] documentID] ofProperty: @"user_id"];
+    [self setValue: @"8470a4c9ad09c8b397d71fece91f985f" ofProperty: @"user_id"];
   }
   return self;
 }

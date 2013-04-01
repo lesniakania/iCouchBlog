@@ -7,7 +7,6 @@
 //
 
 #import "EditPostViewController.h"
-#import "User.h"
 
 @implementation EditPostViewController
 
@@ -17,16 +16,13 @@
   NSDate *now = [NSDate date];
   [self.post setValue: [[Post dateFormatter] stringFromDate: now] ofProperty: @"updated_at"];
 
-  RESTOperation *op = [self.post save];
-  [op onCompletion: ^{
-    if (op.error) {
+  NSError *error;
+  [self.post save: &error];
+  if (error) {
       NSLog(@"Couldn't save the post %@", self);
-    } else {
-      [[User current] addPost: self.post];
-      [self.navigationController popToRootViewControllerAnimated: YES];
-    }
-	}];
-  [op start];
+  } else {
+    [self.navigationController popToRootViewControllerAnimated: YES];
+	}
 }
 
 @end

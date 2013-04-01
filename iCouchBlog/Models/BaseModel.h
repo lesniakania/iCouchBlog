@@ -8,9 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-@interface BaseModel : CouchModel
+@interface BaseModel : CBLModel
 
-+ (CouchDesignDocument *) design;
 + (void) defineViews;
 
 + (id) modelForDocumentWithId: (NSString *) docId;

@@ -7,16 +7,10 @@
 //
 
 #import "BaseModel.h"
-#import "DesignRepository.h"
 
 @implementation BaseModel
 
 static NSDateFormatter *dateFormatter;
-
-+ (CouchDesignDocument *) design {
-  NSString *className = NSStringFromClass(self);
-  return [DesignRepository designForClass: className];
-}
 
 + (void) defineViews {}
 
@@ -32,7 +26,7 @@ static NSDateFormatter *dateFormatter;
 }
 
 + (id) modelForDocumentWithId: (NSString *) docId {
-  CouchDocument *document = [[DataStore currentDatabase] documentWithID: docId];
+  CBLDocument *document = [[DataStore currentDatabase] documentWithID: docId];
   return [[self class] modelForDocument: document];
 }
 

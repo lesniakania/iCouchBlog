@@ -11,9 +11,7 @@
 #ifdef __OBJC__
   #import <UIKit/UIKit.h>
   #import <Foundation/Foundation.h>
-  #import <CouchCocoa/CouchCocoa.h>
-  #import <CouchCocoa/CouchTouchDBServer.h>
-  #import <CouchCocoa/CouchDesignDocument_Embedded.h>
+  #import <CouchbaseLite/CouchbaseLite.h>
 
   #import "DataStore.h"
   #import "Colors.h"

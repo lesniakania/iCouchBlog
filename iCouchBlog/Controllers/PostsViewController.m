@@ -6,53 +6,31 @@
 //  Copyright (c) 2012 Anna Lesniak. All rights reserved.
 //
 
-#import "AppNavigationController.h"
 #import "PostsViewController.h"
 #import "DetailViewController.h"
 #import "EditPostViewController.h"
 #import "Post.h"
-#import "Replicator.h"
+#import "AppDelegate.h"
 
 @implementation PostsViewController
-{
-  PullToRefreshView *pull;
-}
 
 - (void) viewDidLoad {
   [super viewDidLoad];
-  
+    
   [self.navigationController.navigationBar setTintColor: [UIColor navigationBarColor]];
   self.tableView.backgroundColor = [UIColor lightBackgroundColor];
   self.tableView.separatorColor = [UIColor tableSeparatorColor];
   
-  //pull = [[PullToRefreshView alloc] initWithScrollView: (UIScrollView *) self.tableView];
-  //[pull setDelegate: self];
-  //[self.tableView addSubview: pull];
-  
-  CouchLiveQuery* query = [[[Post design] queryViewNamed: @"byTitle"] asLiveQuery];
+  CBLLiveQuery* query = [[[[DataStore currentDatabase] viewNamed:@"postsByTitle"] query] asLiveQuery];
   self.dataSource.query = query;
-    
-  [self reloadTableData];
-}
 
-- (void) pullToRefreshViewShouldRefresh: (PullToRefreshView *) view {
-  [self performSelectorInBackground: @selector(reloadTableData) withObject: nil];
-}
-
-- (void) reloadTableData {
-  [[Replicator currentReplicator] replicateWithFilterNamed: @"Post/for_user"
-                                              filterParams: @{ @"user_id": [[[User current] document] documentID] }
-                                                    target: nil
-                                                  callback: @selector(callback:)
-                                                continuous: YES];
-  //[self.dataSource.query start];
-  //[pull finishedLoading];
-}
-
-- (void) viewWillAppear: (BOOL) animated {
-  [super viewWillAppear: animated];
-  
-  [self reloadTableData];
+  AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
+  NSString *userID = @"8470a4c9ad09c8b397d71fece91f985f";
+  [delegate.postsReplicator replicateWithFilterNamed: @"Post/for_user"
+                                        filterParams: @{ @"user_id": userID }
+                                              target: nil
+                                            callback: @selector(callback:)
+                                          continuous: YES];
 }
 
 #pragma mark - Table View
@@ -67,12 +45,13 @@
   cell.detailTextLabel.textColor = [UIColor lightTextColor];
 }
 
-- (void) couchTableSource: (CouchUITableSource *) source
-              willUseCell: (UITableViewCell *) cell
-                   forRow: (CouchQueryRow *) row {
+- (void)couchTableSource:(CBLUITableSource*)source
+             willUseCell:(UITableViewCell*)cell
+                  forRow:(CBLQueryRow*)row {
   NSDictionary* properties = row.value;
   cell.textLabel.text = [properties valueForKey: @"title"];
   cell.detailTextLabel.text = [properties valueForKey: @"body"];
+  cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 }
 
 - (BOOL) tableView: (UITableView *) tableView canEditRowAtIndexPath: (NSIndexPath *) indexPath {
@@ -85,16 +64,10 @@
     Post *post = [Post modelForDocument: [self.dataSource documentAtIndexPath: indexPath]];
     [[segue destinationViewController] setPost: post];
   } else if ([[segue identifier] isEqualToString: @"addPost"]) {
+    [[segue destinationViewController] setTitle: @"Add post"];
     Post *newPost = [[Post alloc] init];
     [[segue destinationViewController] setPost: newPost];
   }
-}
-
-- (void) logout {
-  User *currentUser = [User current];
-  [currentUser logout];
-  id rootController = [self.storyboard instantiateViewControllerWithIdentifier: @"LoginViewController"];
-  self.navigationController.viewControllers = [NSArray arrayWithObjects: rootController, nil];
 }
 
 @end
