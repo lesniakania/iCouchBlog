@@ -22,39 +22,39 @@
 
 - (void) replicateWithFilterNamed: (NSString *) filterName
                      filterParams: (NSDictionary *) filterParams
-                           target: (id) target
-                         callback: (SEL) callback
                        continuous: (BOOL) continuous {
   [self forgetLastReplication];
   NSArray* replications = [[DataStore currentDatabase] replicateWithURL: [NSURL URLWithString: kSyncURL]
                                                             exclusively: YES];
-  self.filterParams = filterParams;
+  
+  for (CBLReplication *replication in replications) {
+    replication.filter = filterName;
+    replication.query_params = filterParams;
+    replication.continuous = continuous;
+  }
   
   self.pull = [replications objectAtIndex: 0];
-  self.pull.filter = filterName;
-  self.pull.query_params = filterParams;
-  self.pull.continuous = continuous;
-  
   self.push = [replications objectAtIndex: 1];
-  self.push.continuous = continuous;
-  
-  self.target = target;
-  self.callback = callback;
   
   NSNotificationCenter* nctr = [NSNotificationCenter defaultCenter];
   [nctr addObserver: self selector: @selector(replicationProgress:)
                name: kCBLReplicationChangeNotification object: self.pull];
   [nctr addObserver: self selector: @selector(replicationProgress:)
                name: kCBLReplicationChangeNotification object: self.push];
+  
+  [self.pull start];
+  [self.push start];
 }
 
 - (void) forgetLastReplication {
   NSNotificationCenter* nctr = [NSNotificationCenter defaultCenter];
   if (self.pull) {
+    [self.pull stop];
     [nctr removeObserver: self name: nil object: self.pull];
     self.pull = nil;
   }
   if (self.push) {
+    [self.push stop];
     [nctr removeObserver: self name: nil object: self.push];
     self.push = nil;
   }

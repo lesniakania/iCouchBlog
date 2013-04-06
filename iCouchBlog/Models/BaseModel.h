@@ -10,7 +10,7 @@
 
 @interface BaseModel : CBLModel
 
-+ (void) defineViews;
++ (void) defineFilters;
 
 + (id) modelForDocumentWithId: (NSString *) docId;
 + (NSDateFormatter *) dateFormatter;

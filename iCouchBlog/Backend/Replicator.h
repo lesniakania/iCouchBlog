@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-#define kSyncURL @"http://192.168.0.114:5984/couchblog/"
+#define kSyncURL [NSString stringWithFormat: @"%@:5984/couchblog/", Host]
 
 @interface Replicator : NSObject
 
@@ -22,8 +22,6 @@
 
 - (void) replicateWithFilterNamed: (NSString *) filterName
                      filterParams: (NSDictionary *) filterParams
-                           target: (id) target
-                         callback: (SEL) callback
                        continuous: (BOOL) continuous;
 
 @end

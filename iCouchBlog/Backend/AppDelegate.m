@@ -8,19 +8,14 @@
 
 #import "AppDelegate.h"
 #import "Post.h"
-
-@class Post;
+#import "User.h"
 
 @implementation AppDelegate
 
 - (BOOL) application: (UIApplication *) application didFinishLaunchingWithOptions: (NSDictionary *) launchOptions {
   [self setupDatabase];
-  
-  for (id klass in @[[Post class]]) {
-    [klass defineViews];
-  }
-  
-  self.postsReplicator = [[Replicator alloc] init];
+  [self setupFilters];
+  [self setupGeneralViews];
   
   return YES;
 }
@@ -32,6 +27,20 @@
   if (!self.database) {
     NSLog(@"Failed setuping database: %@.", [error localizedDescription]);
   }
+}
+
+- (void) setupFilters {
+  for (id klass in @[[Post class], [User class]]) {
+    [klass defineFilters];
+  }
+}
+
+- (void) setupGeneralViews {
+  [[[DataStore currentDatabase] viewNamed: UserByEmailView] setMapBlock: MAPBLOCK({
+    NSString *type = [doc objectForKey: @"type"];
+    id email = [doc objectForKey: @"email"];
+    if ([type isEqualToString: @"User"] && email) emit(email, doc);
+  }) reduceBlock: nil version: @"1.0"];
 }
 
 @end

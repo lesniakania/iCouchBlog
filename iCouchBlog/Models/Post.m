@@ -7,21 +7,33 @@
 //
 
 #import "Post.h"
+#import "User.h"
 
 @implementation Post
 
-+ (void) defineViews {
-  [[[DataStore currentDatabase] viewNamed: @"postsByTitle"] setMapBlock: MAPBLOCK({
-    NSString *type = [doc objectForKey: @"type"];
-    id title = [doc objectForKey: @"title"];
-    if ([type isEqualToString: @"Post"] && title) emit(title, doc);
-  }) reduceBlock: nil version: @"1.0"];
++ (void) defineFilters {
+  [[DataStore currentDatabase] defineFilter: @"Post/for_user" asBlock: FILTERBLOCK({
+    NSString *type = [revision.properties objectForKey: @"type"];
+    NSString *userId = [params valueForKey: @"user_id"];
+    NSString *docId = [revision.properties objectForKey: @"_id"];
+    NSString *docUserId = [revision.properties objectForKey: @"user_id"];
+    if (revision.isDeleted) {
+      return YES;
+    }
+    if ([type isEqualToString: @"Post"] && [docUserId isEqualToString: userId]) {
+      return YES;
+    }
+    if ([type isEqualToString: @"User"] && [docId isEqualToString: userId]) {
+      return YES;
+    }
+    return NO;
+  })];
 }
 
 - (id) init {
   self = [super init];
   if (self) {
-    [self setValue: @"8470a4c9ad09c8b397d71fece91f985f" ofProperty: @"user_id"];
+    [self setValue: [[User current] documentID] ofProperty: @"user_id"];
   }
   return self;
 }

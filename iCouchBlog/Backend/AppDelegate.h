@@ -7,14 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "Replicator.h"
 
 #define kDatabaseName @"icouchblog"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) CBLDatabase *database;
-@property (strong, nonatomic) Replicator *postsReplicator;
 
 @property (strong, nonatomic) UIWindow *window;
 

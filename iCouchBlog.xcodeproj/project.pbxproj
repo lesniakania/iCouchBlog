@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8125912D170A2015003268E3 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 8125912C170A2015003268E3 /* NSData+Base64.m */; };
+		81259130170A28CD003268E3 /* AutheticationRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 8125912F170A28CD003268E3 /* AutheticationRequest.m */; };
+		81259132170A2AC0003268E3 /* YAJLiOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81259131170A2AC0003268E3 /* YAJLiOS.framework */; };
+		816B445B1709C54C00B69A89 /* AppNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 816B44581709C54C00B69A89 /* AppNavigationController.m */; };
+		816B445C1709C54C00B69A89 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 816B445A1709C54C00B69A89 /* LoginViewController.m */; };
+		816B445F1709C57F00B69A89 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 816B445E1709C57F00B69A89 /* User.m */; };
 		817E3E7116216E3400DDB74E /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E3E6E16216E3400DDB74E /* BaseModel.m */; };
 		817E3E7216216E3400DDB74E /* Post.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E3E7016216E3400DDB74E /* Post.m */; };
 		817E3E8316216E5300DDB74E /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 817E3E7E16216E5300DDB74E /* DetailViewController.m */; };
@@ -49,6 +55,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8125912B170A2015003268E3 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSData+Base64.h"; path = "Supporting FIles/NSData+Base64.h"; sourceTree = "<group>"; };
+		8125912C170A2015003268E3 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSData+Base64.m"; path = "Supporting FIles/NSData+Base64.m"; sourceTree = "<group>"; };
+		8125912E170A28CD003268E3 /* AutheticationRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutheticationRequest.h; sourceTree = "<group>"; };
+		8125912F170A28CD003268E3 /* AutheticationRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutheticationRequest.m; sourceTree = "<group>"; };
+		81259131170A2AC0003268E3 /* YAJLiOS.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = YAJLiOS.framework; path = iCouchBlog/Frameworks/YAJLiOS.framework; sourceTree = "<group>"; };
+		816B44571709C54C00B69A89 /* AppNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppNavigationController.h; path = Controllers/AppNavigationController.h; sourceTree = "<group>"; };
+		816B44581709C54C00B69A89 /* AppNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppNavigationController.m; path = Controllers/AppNavigationController.m; sourceTree = "<group>"; };
+		816B44591709C54C00B69A89 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Controllers/LoginViewController.h; sourceTree = "<group>"; };
+		816B445A1709C54C00B69A89 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Controllers/LoginViewController.m; sourceTree = "<group>"; };
+		816B445D1709C57F00B69A89 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = Models/User.h; sourceTree = "<group>"; };
+		816B445E1709C57F00B69A89 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = Models/User.m; sourceTree = "<group>"; };
 		817E3E6D16216E3400DDB74E /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseModel.h; path = Models/BaseModel.h; sourceTree = "<group>"; };
 		817E3E6E16216E3400DDB74E /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseModel.m; path = Models/BaseModel.m; sourceTree = "<group>"; };
 		817E3E6F16216E3400DDB74E /* Post.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Post.h; path = Models/Post.h; sourceTree = "<group>"; };
@@ -109,6 +126,7 @@
 				8191D09115EA382600591DC5 /* CoreGraphics.framework in Frameworks */,
 				81FB0EC01709628200A967ED /* CouchbaseLite.framework in Frameworks */,
 				81FB0EC11709628200A967ED /* CouchbaseLiteListener.framework in Frameworks */,
+				81259132170A2AC0003268E3 /* YAJLiOS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,6 +150,8 @@
 				817E3E9316216E7B00DDB74E /* AppDelegate.m */,
 				818D949516340EBB0046B1AD /* Replicator.h */,
 				818D949616340EBB0046B1AD /* Replicator.m */,
+				8125912E170A28CD003268E3 /* AutheticationRequest.h */,
+				8125912F170A28CD003268E3 /* AutheticationRequest.m */,
 			);
 			path = Backend;
 			sourceTree = "<group>";
@@ -159,6 +179,7 @@
 		8191D08B15EA382600591DC5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				81259131170A2AC0003268E3 /* YAJLiOS.framework */,
 				81FB0EBE1709628200A967ED /* CouchbaseLite.framework */,
 				81FB0EBF1709628200A967ED /* CouchbaseLiteListener.framework */,
 				81866C9E163D335B00395045 /* QuartzCore.framework */,
@@ -190,6 +211,8 @@
 		8191D09315EA382600591DC5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8125912B170A2015003268E3 /* NSData+Base64.h */,
+				8125912C170A2015003268E3 /* NSData+Base64.m */,
 				817E3EA016216F5A00DDB74E /* iCouchBlog-Prefix.pch */,
 				817E3EA116216F5A00DDB74E /* main.m */,
 				817E3E9E16216F2400DDB74E /* iCouchBlog-Info.plist */,
@@ -224,6 +247,10 @@
 		8191D0C715EA3DD000591DC5 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				816B44571709C54C00B69A89 /* AppNavigationController.h */,
+				816B44581709C54C00B69A89 /* AppNavigationController.m */,
+				816B44591709C54C00B69A89 /* LoginViewController.h */,
+				816B445A1709C54C00B69A89 /* LoginViewController.m */,
 				817E3E8116216E5300DDB74E /* PostsViewController.h */,
 				817E3E8216216E5300DDB74E /* PostsViewController.m */,
 				817E3E7D16216E5300DDB74E /* DetailViewController.h */,
@@ -241,6 +268,8 @@
 				817E3E6E16216E3400DDB74E /* BaseModel.m */,
 				817E3E6F16216E3400DDB74E /* Post.h */,
 				817E3E7016216E3400DDB74E /* Post.m */,
+				816B445D1709C57F00B69A89 /* User.h */,
+				816B445E1709C57F00B69A89 /* User.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -371,6 +400,11 @@
 				817E3E9416216E7B00DDB74E /* AppDelegate.m in Sources */,
 				817E3EA216216F5A00DDB74E /* main.m in Sources */,
 				818D949716340EBB0046B1AD /* Replicator.m in Sources */,
+				816B445B1709C54C00B69A89 /* AppNavigationController.m in Sources */,
+				816B445C1709C54C00B69A89 /* LoginViewController.m in Sources */,
+				816B445F1709C57F00B69A89 /* User.m in Sources */,
+				8125912D170A2015003268E3 /* NSData+Base64.m in Sources */,
+				81259130170A28CD003268E3 /* AutheticationRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -504,7 +538,10 @@
 					"\"$(SRCROOT)\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";
@@ -535,7 +572,10 @@
 					"\"$(SRCROOT)\"",
 				);
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"-all_load",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";

@@ -10,6 +10,7 @@
 #import "DetailViewController.h"
 #import "EditPostViewController.h"
 #import "Post.h"
+#import "User.h"
 #import "AppDelegate.h"
 
 @implementation PostsViewController
@@ -21,17 +22,31 @@
   self.tableView.backgroundColor = [UIColor lightBackgroundColor];
   self.tableView.separatorColor = [UIColor tableSeparatorColor];
   
-  CBLLiveQuery* query = [[[[DataStore currentDatabase] viewNamed:@"postsByTitle"] query] asLiveQuery];
+  [self setupDatabaseView];
+  
+  CBLLiveQuery* query = [[[[DataStore currentDatabase] viewNamed: PostByTitleView] query] asLiveQuery];
+  query.descending = YES;
   self.dataSource.query = query;
 
-  AppDelegate *delegate = [[UIApplication sharedApplication] delegate];
-  NSString *userID = @"8470a4c9ad09c8b397d71fece91f985f";
-  [delegate.postsReplicator replicateWithFilterNamed: @"Post/for_user"
-                                        filterParams: @{ @"user_id": userID }
-                                              target: nil
-                                            callback: @selector(callback:)
-                                          continuous: YES];
+  self.replicator = [[Replicator alloc] init];
+  [self.replicator replicateWithFilterNamed: @"Post/for_user"
+                               filterParams: @{ @"user_id": [[User current] documentID] }
+                                 continuous: YES];
 }
+
+- (void) setupDatabaseView {
+  [[[DataStore currentDatabase] viewNamed: PostByTitleView] setMapBlock: nil version: @"1.0"];
+  
+  [[[DataStore currentDatabase] viewNamed: PostByTitleView] setMapBlock: MAPBLOCK({
+    NSString *type = [doc objectForKey: @"type"];
+    NSString *title = [doc objectForKey: @"title"];
+    NSString *userId = [doc objectForKey: @"user_id"];
+    if ([type isEqualToString: @"Post"] && [userId isEqualToString: [[User current] documentID]]) {
+      emit(title, doc);
+    }
+  }) version: @"1.0"];
+}
+
 
 #pragma mark - Table View
 
@@ -45,9 +60,9 @@
   cell.detailTextLabel.textColor = [UIColor lightTextColor];
 }
 
-- (void)couchTableSource:(CBLUITableSource*)source
-             willUseCell:(UITableViewCell*)cell
-                  forRow:(CBLQueryRow*)row {
+- (void) couchTableSource: (CBLUITableSource*)source
+              willUseCell: (UITableViewCell*)cell
+                   forRow: (CBLQueryRow*)row {
   NSDictionary* properties = row.value;
   cell.textLabel.text = [properties valueForKey: @"title"];
   cell.detailTextLabel.text = [properties valueForKey: @"body"];
@@ -68,6 +83,17 @@
     Post *newPost = [[Post alloc] init];
     [[segue destinationViewController] setPost: newPost];
   }
+}
+
+- (void) logout {
+  [self.replicator forgetLastReplication];
+  self.replicator = nil;
+  
+  User *currentUser = [User current];
+  [currentUser logout];
+  
+  id rootController = [self.storyboard instantiateViewControllerWithIdentifier: @"LoginViewController"];
+  self.navigationController.viewControllers = @[rootController];
 }
 
 @end

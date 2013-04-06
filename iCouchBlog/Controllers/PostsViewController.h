@@ -8,11 +8,16 @@
 
 #import <UIKit/UIKit.h>
 #import <Couchbaselite/CBLUITableSource.h>
+#import "Replicator.h"
 
 @class DetailViewController;
 
 @interface PostsViewController : UITableViewController <CBLUITableDelegate>
 
 @property (strong, nonatomic) IBOutlet CBLUITableSource* dataSource;
+
+@property (strong, nonatomic) Replicator *replicator;
+
+- (IBAction) logout;
 
 @end

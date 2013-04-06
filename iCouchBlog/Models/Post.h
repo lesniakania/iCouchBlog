@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "BaseModel.h"
 
+#define PostByTitleView @"postsByTitle"
+
 @interface Post : BaseModel
 
 @end

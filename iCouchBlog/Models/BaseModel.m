@@ -12,7 +12,7 @@
 
 static NSDateFormatter *dateFormatter;
 
-+ (void) defineViews {}
++ (void) defineFilters {}
 
 - (id) init {
   self = [self initWithNewDocumentInDatabase: [DataStore currentDatabase]];

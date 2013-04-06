@@ -8,11 +8,15 @@
 #warning "This project uses features only available in iOS SDK 5.0 and later."
 #endif
 
+#define Host @"http://192.168.0.101"
+
 #ifdef __OBJC__
   #import <UIKit/UIKit.h>
   #import <Foundation/Foundation.h>
   #import <CouchbaseLite/CouchbaseLite.h>
+  #import <YAJLiOS/YAJL.h>
 
   #import "DataStore.h"
   #import "Colors.h"
+  #import "NSData+Base64.h"
 #endif

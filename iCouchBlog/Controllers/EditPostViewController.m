@@ -7,6 +7,7 @@
 //
 
 #import "EditPostViewController.h"
+#import "User.h"
 
 @implementation EditPostViewController
 
@@ -21,6 +22,7 @@
   if (error) {
       NSLog(@"Couldn't save the post %@", self);
   } else {
+    [[User current] addPost: self.post];
     [self.navigationController popToRootViewControllerAnimated: YES];
 	}
 }
