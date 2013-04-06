@@ -7,6 +7,7 @@
 //
 
 #import "Replicator.h"
+#import "Post.h"
 
 @implementation Replicator
 
@@ -17,6 +18,19 @@
     NSLog(@"Replication progress: %u / %u", completed, total);
   } else {
     NSLog(@"Replication finished.");
+    
+    CBLQuery* query = [[[DataStore currentDatabase] viewNamed: PostByConflicts] query];
+    NSLog(@"<CONFLICTS>");
+    for (CBLQueryRow *row in query.rows) {
+      NSError *error = nil;
+    
+      NSLog(@"<CONFLICTING REVISIONS FOR %@>", row.documentID);
+      for (CBLRevision *revision in [row.document getConflictingRevisions: &error]) {
+        NSLog(@"%@", revision.properties);
+      }
+      NSLog(@"</CONFLICTING REVISIONS FOR %@>", row.documentID);
+    }
+    NSLog(@"</CONFLICTS>");
   }
 }
 

@@ -10,6 +10,7 @@
 #import "BaseModel.h"
 
 #define PostByTitleView @"postsByTitle"
+#define PostByConflicts @"postByConflicts"
 
 @interface Post : BaseModel
 
