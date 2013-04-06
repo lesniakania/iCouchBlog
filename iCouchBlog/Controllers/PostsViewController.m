@@ -11,7 +11,6 @@
 #import "EditPostViewController.h"
 #import "Post.h"
 #import "User.h"
-#import "AppDelegate.h"
 
 @implementation PostsViewController
 
@@ -23,6 +22,7 @@
   self.tableView.separatorColor = [UIColor tableSeparatorColor];
   
   [self setupDatabaseView];
+  [self setupReachabilityNotification];
   
   CBLLiveQuery* query = [[[[DataStore currentDatabase] viewNamed: PostByTitleView] query] asLiveQuery];
   query.descending = YES;
@@ -32,6 +32,21 @@
   [self.replicator replicateWithFilterNamed: @"Post/for_user"
                                filterParams: @{ @"user_id": [[User current] documentID] }
                                  continuous: YES];
+}
+
+- (void) setupReachabilityNotification {
+  [[NSNotificationCenter defaultCenter] addObserver: self
+                                           selector: @selector(handleNetworkChange:)
+                                               name: kReachabilityChangedNotification object:nil];
+  self.reachability = [Reachability reachabilityForInternetConnection];
+  [self.reachability startNotifier];
+}
+
+- (void)handleNetworkChange:(NSNotification *)notice{
+  NetworkStatus status = [self.reachability currentReachabilityStatus];
+  if (!status == NotReachable) {
+    [self.replicator startReplications];
+  }
 }
 
 - (void) setupDatabaseView {

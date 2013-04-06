@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Couchbaselite/CBLUITableSource.h>
 #import "Replicator.h"
+#import "Reachability.h"
 
 @class DetailViewController;
 
@@ -17,6 +18,7 @@
 @property (strong, nonatomic) IBOutlet CBLUITableSource* dataSource;
 
 @property (strong, nonatomic) Replicator *replicator;
+@property (strong, nonatomic) Reachability *reachability;
 
 - (IBAction) logout;
 

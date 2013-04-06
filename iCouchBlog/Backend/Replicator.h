@@ -24,4 +24,6 @@
                      filterParams: (NSDictionary *) filterParams
                        continuous: (BOOL) continuous;
 
+- (void) startReplications;
+
 @end

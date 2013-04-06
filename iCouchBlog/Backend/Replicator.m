@@ -60,6 +60,11 @@
   [self.push start];
 }
 
+- (void) startReplications {
+  [self.pull start];
+  [self.push start];
+}
+
 - (void) forgetLastReplication {
   NSNotificationCenter* nctr = [NSNotificationCenter defaultCenter];
   if (self.pull) {

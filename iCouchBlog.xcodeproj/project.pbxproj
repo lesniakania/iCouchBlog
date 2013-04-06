@@ -39,6 +39,7 @@
 		8191D0B315EA382700591DC5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8191D08E15EA382600591DC5 /* Foundation.framework */; };
 		8191D0BB15EA382700591DC5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8191D0B915EA382700591DC5 /* InfoPlist.strings */; };
 		8191D0BE15EA382700591DC5 /* iCouchBlogTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8191D0BD15EA382700591DC5 /* iCouchBlogTests.m */; };
+		81D93BCF171070C2005E493C /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 81D93BCE171070C2005E493C /* Reachability.m */; };
 		81F7DBC3162DC7C600BE8DDB /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 81F7DBC2162DC7C600BE8DDB /* Default-568h@2x.png */; };
 		81FB0EC01709628200A967ED /* CouchbaseLite.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81FB0EBE1709628200A967ED /* CouchbaseLite.framework */; };
 		81FB0EC11709628200A967ED /* CouchbaseLiteListener.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81FB0EBF1709628200A967ED /* CouchbaseLiteListener.framework */; };
@@ -105,6 +106,8 @@
 		8191D0BA15EA382700591DC5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		8191D0BC15EA382700591DC5 /* iCouchBlogTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iCouchBlogTests.h; sourceTree = "<group>"; };
 		8191D0BD15EA382700591DC5 /* iCouchBlogTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iCouchBlogTests.m; sourceTree = "<group>"; };
+		81D93BCD171070C2005E493C /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Reachability.h; path = "Supporting FIles/Reachability.h"; sourceTree = "<group>"; };
+		81D93BCE171070C2005E493C /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Reachability.m; path = "Supporting FIles/Reachability.m"; sourceTree = "<group>"; };
 		81F7DBC2162DC7C600BE8DDB /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		81FB0EBE1709628200A967ED /* CouchbaseLite.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CouchbaseLite.framework; path = iCouchBlog/Frameworks/CouchbaseLite.framework; sourceTree = "<group>"; };
 		81FB0EBF1709628200A967ED /* CouchbaseLiteListener.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CouchbaseLiteListener.framework; path = iCouchBlog/Frameworks/CouchbaseLiteListener.framework; sourceTree = "<group>"; };
@@ -221,6 +224,8 @@
 				817E3E8716216E6E00DDB74E /* Colors.m */,
 				817E3E8816216E6E00DDB74E /* DataStore.h */,
 				817E3E8916216E6E00DDB74E /* DataStore.m */,
+				81D93BCD171070C2005E493C /* Reachability.h */,
+				81D93BCE171070C2005E493C /* Reachability.m */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -405,6 +410,7 @@
 				816B445F1709C57F00B69A89 /* User.m in Sources */,
 				8125912D170A2015003268E3 /* NSData+Base64.m in Sources */,
 				81259130170A28CD003268E3 /* AutheticationRequest.m in Sources */,
+				81D93BCF171070C2005E493C /* Reachability.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -543,8 +549,8 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";
+				PROVISIONING_PROFILE = "0ED2EA75-9BAE-4D8E-9C85-58D2DB36D985";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0ED2EA75-9BAE-4D8E-9C85-58D2DB36D985";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv7s";
 				WRAPPER_EXTENSION = app;
@@ -577,7 +583,7 @@
 					"-all_load",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";
+				PROVISIONING_PROFILE = "0ED2EA75-9BAE-4D8E-9C85-58D2DB36D985";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7B6E1A95-951D-4700-8DC4-5B8FAEAECA48";
 				SDKROOT = iphoneos;
 				VALID_ARCHS = "armv7 armv7s";
