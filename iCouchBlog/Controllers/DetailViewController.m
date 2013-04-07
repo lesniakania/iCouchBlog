@@ -19,8 +19,8 @@
 
 - (void) configureView {
   if (self.post) {
-    self.titleView.text = [self.post getValueOfProperty: @"title"];
-    self.bodyView.text = [self.post getValueOfProperty: @"body"];
+    self.titleView.text = self.post.title;
+    self.bodyView.text = self.post.body;
   }
   self.view.backgroundColor = [UIColor backgroundColor];
   self.titleView.backgroundColor = [UIColor lightBackgroundColor];

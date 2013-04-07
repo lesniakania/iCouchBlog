@@ -15,6 +15,9 @@
 
 @interface User : BaseModel
 
+@property (strong, nonatomic) NSString *email;
+@property (strong, nonatomic) NSArray *posts_ids;
+
 + (User *) current;
 + (User *) findByEmail: (NSString *) anEmail;
 - (NSString *) documentID;

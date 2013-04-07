@@ -11,6 +11,8 @@
 
 @implementation Post
 
+@dynamic title, body, user_id;
+
 + (void) defineFilters {
   [[DataStore currentDatabase] defineFilter: @"Post/for_user" asBlock: FILTERBLOCK({
     NSString *type = [revision.properties objectForKey: @"type"];
@@ -33,7 +35,7 @@
 - (id) init {
   self = [super init];
   if (self) {
-    [self setValue: [[User current] documentID] ofProperty: @"user_id"];
+    self.user_id = [[User current] documentID];
   }
   return self;
 }

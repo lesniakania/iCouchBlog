@@ -8,19 +8,19 @@
 
 #import "BaseModel.h"
 
+static NSDateFormatter *dateFormatter;
+
 @implementation BaseModel
 
-static NSDateFormatter *dateFormatter;
+@dynamic type, created_at, updated_at;
 
 + (void) defineFilters {}
 
 - (id) init {
   self = [self initWithNewDocumentInDatabase: [DataStore currentDatabase]];
   if (self) {
-    [self setValue: NSStringFromClass([self class]) ofProperty: @"type"];
-    
-    NSDate *now = [NSDate date];
-    [self setValue: [[[self class] dateFormatter] stringFromDate: now] ofProperty: @"created_at"];
+    self.type = NSStringFromClass([self class]);
+    self.created_at = [[[self class] dateFormatter] stringFromDate: [NSDate date]];
   }
   return self;
 }

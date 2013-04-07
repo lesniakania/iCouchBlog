@@ -12,10 +12,9 @@
 @implementation EditPostViewController
 
 - (void) savePressed {
-  [self.post setValue: self.titleView.text ofProperty: @"title"];
-  [self.post setValue: self.bodyView.text ofProperty: @"body"];
-  NSDate *now = [NSDate date];
-  [self.post setValue: [[Post dateFormatter] stringFromDate: now] ofProperty: @"updated_at"];
+  self.post.title = self.titleView.text;
+  self.post.body = self.bodyView.text;
+  self.post.updated_at = [[Post dateFormatter] stringFromDate: [NSDate date]];
 
   NSError *error;
   [self.post save: &error];

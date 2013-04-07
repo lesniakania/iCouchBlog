@@ -10,6 +10,10 @@
 
 @interface BaseModel : CBLModel
 
+@property (strong, nonatomic) NSString *type;
+@property (strong, nonatomic) NSString *created_at;
+@property (strong, nonatomic) NSString *updated_at;
+
 + (void) defineFilters;
 
 + (id) modelForDocumentWithId: (NSString *) docId;

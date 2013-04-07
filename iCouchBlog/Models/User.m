@@ -14,6 +14,8 @@ static User *currentUser;
 
 @implementation User
 
+@dynamic email, posts_ids;
+
 + (void) defineFilters {}
 
 + (User *) current {
@@ -41,10 +43,10 @@ static User *currentUser;
 
 - (void) addPost: (Post *) post {
   NSString *postId = [[post document] documentID];
-  NSMutableArray *posts = [NSMutableArray arrayWithArray: [self getValueOfProperty: @"post_ids"]];
-  if (![posts containsObject: postId]) {
-    [posts addObject: postId];
-    [self setValue: posts ofProperty: @"post_ids"];
+  NSMutableArray *postsIds = [NSMutableArray arrayWithArray: self.posts_ids];
+  if (![postsIds containsObject: postId]) {
+    [postsIds addObject: postId];
+    self.posts_ids = postsIds;
   }
   
   NSError *error;
@@ -76,10 +78,8 @@ static User *currentUser;
 }
 
 - (BOOL) login {
-  NSString *email = [self getValueOfProperty: @"email"];
-  
   NSUserDefaults *settings = [NSUserDefaults standardUserDefaults];
-  [settings setObject: email forKey: UserEmailSettingsKey];
+  [settings setObject: self.email forKey: UserEmailSettingsKey];
   [settings synchronize];
   
   return [User current] != nil;
