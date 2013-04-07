@@ -58,7 +58,6 @@ static User *currentUser;
 }
 
 + (User *) createWith: (NSDictionary *) hash {
-  NSLog(@"HASH: %@", hash);
   NSMutableDictionary *properties = [NSMutableDictionary dictionary];
   
   [properties setValue: @"User" forKey: @"type"];
@@ -73,7 +72,6 @@ static User *currentUser;
   [doc putProperties: properties error: &error];
 
   User *user = [User findByEmail: [properties valueForKey: @"email"]];
-  NSLog(@"USER %@", user);
   return user;
 }
 
