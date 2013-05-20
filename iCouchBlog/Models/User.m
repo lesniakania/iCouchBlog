@@ -14,7 +14,7 @@ static User *currentUser;
 
 @implementation User
 
-@dynamic email, posts_ids;
+@dynamic email, post_ids;
 
 + (void) defineFilters {}
 
@@ -43,10 +43,10 @@ static User *currentUser;
 
 - (void) addPost: (Post *) post {
   NSString *postId = [[post document] documentID];
-  NSMutableArray *postsIds = [NSMutableArray arrayWithArray: self.posts_ids];
+  NSMutableArray *postsIds = [NSMutableArray arrayWithArray: self.post_ids];
   if (![postsIds containsObject: postId]) {
     [postsIds addObject: postId];
-    self.posts_ids = postsIds;
+    self.post_ids = postsIds;
   }
   
   NSError *error;

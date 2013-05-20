@@ -25,7 +25,6 @@
   [self setupReachabilityNotification];
   
   CBLLiveQuery* query = [[[[DataStore currentDatabase] viewNamed: PostByTitleView] query] asLiveQuery];
-  query.descending = YES;
   self.dataSource.query = query;
 
   self.replicator = [[Replicator alloc] init];
