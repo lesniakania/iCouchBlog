@@ -15,10 +15,10 @@
 
 + (void) defineFilters {
   [[DataStore currentDatabase] defineFilter: @"Post/for_user" asBlock: FILTERBLOCK({
-    NSString *type = [revision.properties objectForKey: @"type"];
-    NSString *userId = [params valueForKey: @"user_id"];
-    NSString *docId = [revision.properties objectForKey: @"_id"];
-    NSString *docUserId = [revision.properties objectForKey: @"user_id"];
+    NSString *type = revision.properties[@"type"];
+    NSString *userId = params[@"user_id"];
+    NSString *docId = revision.properties[@"_id"];
+    NSString *docUserId = revision.properties[@"user_id"];
     if (revision.isDeleted) {
       return YES;
     }

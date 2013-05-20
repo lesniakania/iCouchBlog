@@ -31,7 +31,7 @@ static User *currentUser;
   query.keys = @[anEmail];
   NSDictionary *values = [[query.rows nextRow] value];
   if (values) {
-    return [User modelForDocumentWithId: [values objectForKey: @"_id"]];
+    return [User modelForDocumentWithId: values[@"_id"]];
   } else {
     return nil;
   }
@@ -65,15 +65,15 @@ static User *currentUser;
   [properties setValue: @"User" forKey: @"type"];
   
   for (NSString *property in @[@"email", @"post_ids", @"created_at", @"updated_at"]) {
-    [properties setValue: [hash valueForKey: property] forKey: property];
+    [properties setValue: hash[property] forKey: property];
   }
   
-  NSString *userId = [hash valueForKey: @"_id"];
+  NSString *userId = hash[@"_id"];
   CBLDocument* doc = [[DataStore currentDatabase] documentWithID: userId];
   NSError* error;
   [doc putProperties: properties error: &error];
 
-  User *user = [User findByEmail: [properties valueForKey: @"email"]];
+  User *user = [User findByEmail: properties[@"email"]];
   return user;
 }
 

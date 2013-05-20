@@ -37,14 +37,14 @@
 
 - (void) setupGeneralViews {
   [[[DataStore currentDatabase] viewNamed: UserByEmailView] setMapBlock: MAPBLOCK({
-    NSString *type = [doc objectForKey: @"type"];
-    id email = [doc objectForKey: @"email"];
+    NSString *type = doc[@"type"];
+    id email = doc[@"email"];
     if ([type isEqualToString: @"User"] && email) emit(email, doc);
   }) reduceBlock: nil version: @"1.0"];
   
   [[[DataStore currentDatabase] viewNamed: PostByConflicts] setMapBlock: MAPBLOCK({
-    NSString *type = [doc objectForKey: @"type"];
-    id conflicts = [doc objectForKey: @"_conflicts"];
+    NSString *type = doc[@"type"];
+    id conflicts = doc[@"_conflicts"];
     if ([type isEqualToString: @"Post"] && conflicts) {
       emit(conflicts, doc);
     }

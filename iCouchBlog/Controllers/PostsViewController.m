@@ -52,9 +52,9 @@
   [[[DataStore currentDatabase] viewNamed: PostByTitleView] setMapBlock: nil version: @"1.0"];
   
   [[[DataStore currentDatabase] viewNamed: PostByTitleView] setMapBlock: MAPBLOCK({
-    NSString *type = [doc objectForKey: @"type"];
-    NSString *title = [doc objectForKey: @"title"];
-    NSString *userId = [doc objectForKey: @"user_id"];
+    NSString *type = doc[@"type"];
+    NSString *title = doc[@"title"];
+    NSString *userId = doc[@"user_id"];
     if ([type isEqualToString: @"Post"] && [userId isEqualToString: [[User current] documentID]]) {
       emit(title, doc);
     }
@@ -78,8 +78,8 @@
               willUseCell: (UITableViewCell*)cell
                    forRow: (CBLQueryRow*)row {
   NSDictionary* properties = row.value;
-  cell.textLabel.text = [properties valueForKey: @"title"];
-  cell.detailTextLabel.text = [properties valueForKey: @"body"];
+  cell.textLabel.text = properties[@"title"];
+  cell.detailTextLabel.text = properties[@"body"];
   cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
 }
 
