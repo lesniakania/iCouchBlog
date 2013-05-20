@@ -14,7 +14,6 @@
 - (void) savePressed {
   self.post.title = self.titleView.text;
   self.post.body = self.bodyView.text;
-  self.post.updated_at = [[Post dateFormatter] stringFromDate: [NSDate date]];
 
   NSError *error;
   [self.post save: &error];

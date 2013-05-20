@@ -8,8 +8,6 @@
 
 #import "BaseModel.h"
 
-static NSDateFormatter *dateFormatter;
-
 @implementation BaseModel
 
 @dynamic type, created_at, updated_at;
@@ -20,7 +18,7 @@ static NSDateFormatter *dateFormatter;
   self = [self initWithNewDocumentInDatabase: [DataStore currentDatabase]];
   if (self) {
     self.type = NSStringFromClass([self class]);
-    self.created_at = [[[self class] dateFormatter] stringFromDate: [NSDate date]];
+    self.created_at = [NSDate date];
   }
   return self;
 }
@@ -30,13 +28,10 @@ static NSDateFormatter *dateFormatter;
   return [[self class] modelForDocument: document];
 }
 
-+ (NSDateFormatter *) dateFormatter {
-  if (!dateFormatter) {
-    dateFormatter = [[NSDateFormatter alloc] init];
-  }
-  [dateFormatter setDateFormat: @"yyyy-MM-ddTHH:mm.sssZ"];
+- (BOOL) save: (NSError **) outError {
+  self.updated_at = [NSDate date];
   
-  return dateFormatter;
+  return [super save: outError];
 }
 
 @end
