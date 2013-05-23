@@ -38,7 +38,7 @@ static User *currentUser;
 }
 
 - (NSString *) documentID {
-  return [[[User current] document] documentID];
+  return [[self document] documentID];
 }
 
 - (void) addPost: (Post *) post {
@@ -73,8 +73,7 @@ static User *currentUser;
   NSError* error;
   [doc putProperties: properties error: &error];
 
-  User *user = [User findByEmail: properties[@"email"]];
-  return user;
+  return [User modelForDocument: doc];
 }
 
 - (BOOL) login {

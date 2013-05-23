@@ -23,12 +23,16 @@
     self.bodyView.text = self.post.body;
   }
   self.view.backgroundColor = [UIColor backgroundColor];
-  self.titleView.backgroundColor = [UIColor lightBackgroundColor];
-  self.bodyView.backgroundColor = [UIColor lightBackgroundColor];
-  self.titleLabel.textColor = [UIColor darkTextColor];
+  
+  for (id element in @[self.titleView, self.bodyView]) {
+    [element setBackgroundColor: [UIColor lightBackgroundColor]];
+  }
+  
+  for (id element in @[self.titleLabel, self.titleView, self.bodyView]) {
+    [element setTextColor: [UIColor darkTextColor]];
+  }
+  
   self.bodyLabel.textColor = [UIColor lightTextColor];
-  self.titleView.textColor = [UIColor darkTextColor];
-  self.bodyView.textColor = [UIColor darkTextColor];
 }
 
 - (void) viewDidLoad {

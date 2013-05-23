@@ -17,6 +17,7 @@
 
   NSError *error;
   [self.post save: &error];
+  
   if (error) {
       NSLog(@"Couldn't save the post %@", self);
   } else {

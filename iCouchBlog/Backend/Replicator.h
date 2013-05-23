@@ -14,9 +14,6 @@
 
 @property (strong, nonatomic) CBLReplication *pull;
 @property (strong, nonatomic) CBLReplication *push;
-@property (strong, nonatomic) id target;
-@property (nonatomic) SEL callback;
-@property (strong, nonatomic) NSDictionary *filterParams;
 
 - (void) forgetLastReplication;
 

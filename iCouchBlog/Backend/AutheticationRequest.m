@@ -21,8 +21,8 @@
   
   NSHTTPURLResponse *response = nil;
   NSError *error = nil;
-  NSData *responseData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
-  NSString *responseString = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+  NSData *responseData = [NSURLConnection sendSynchronousRequest: request returningResponse:&response error: &error];
+  NSString *responseString = [[NSString alloc] initWithData: responseData encoding: NSUTF8StringEncoding];
   
   NSDictionary *userData = nil;
   @try {

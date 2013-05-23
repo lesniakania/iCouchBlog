@@ -15,6 +15,7 @@
   if (self.pull.mode == kCBLReplicationActive || self.push.mode == kCBLReplicationActive) {
     unsigned completed = self.pull.completed + self.push.completed;
     unsigned total = self.pull.total + self.push.total;
+    
     NSLog(@"Replication progress: %u / %u", completed, total);
   } else {
     NSLog(@"Replication finished.");
@@ -56,8 +57,7 @@
   [nctr addObserver: self selector: @selector(replicationProgress:)
                name: kCBLReplicationChangeNotification object: self.push];
   
-  [self.pull start];
-  [self.push start];
+  [self startReplications];
 }
 
 - (void) startReplications {

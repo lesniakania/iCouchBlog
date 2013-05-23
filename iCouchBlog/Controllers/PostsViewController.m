@@ -41,7 +41,7 @@
   [self.reachability startNotifier];
 }
 
-- (void)handleNetworkChange:(NSNotification *)notice{
+- (void) handleNetworkChange: (NSNotification *) notice {
   NetworkStatus status = [self.reachability currentReachabilityStatus];
   if (!status == NotReachable) {
     [self.replicator startReplications];
